@@ -1,0 +1,307 @@
+\doxysection{Référence du fichier src/processus.c}
+\hypertarget{processus_8c}{}\label{processus_8c}\index{src/processus.c@{src/processus.c}}
+
+
+Implementation of process management functions.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include "{}processus.\+h"{}}\newline
+{\ttfamily \#include "{}builtins.\+h"{}}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{processus_8c_a369266c24eacffb87046522897a570d5}\label{processus_8c_a369266c24eacffb87046522897a570d5} 
+\#define {\bfseries \+\_\+\+GNU\+\_\+\+SOURCE}
+\item 
+\#define \mbox{\hyperlink{processus_8c_a816ccaf3e5e64cc98f2b5613cc177398}{MAX\+\_\+\+FDS}}~32
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}initialisation d\textquotesingle{}une structure de processus. \end{DoxyCompactList}\item 
+\Hypertarget{processus_8c_a09886d6ba96e67553bf3c49ed8ade975}\label{processus_8c_a09886d6ba96e67553bf3c49ed8ade975} 
+\#define {\bfseries MAX\+\_\+\+TOKENS}~128
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{processus_8c_a9de855396463362feef85246c5055741}{init\+\_\+processus}} (\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}proc)
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}initialisation d\textquotesingle{}une structure de processus. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{processus_8c_af64b28bf32de91947039dd43e6b34d22}{launch\+\_\+processus}} (\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}proc)
+\begin{DoxyCompactList}\small\item\em Fonction de lancement d\textquotesingle{}un processus à partir d\textquotesingle{}une structure de processus. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{processus_8c_aa7be566c887f63f8962473eb35662e5a}{init\+\_\+control\+\_\+flow}} (\mbox{\hyperlink{structcontrol__flow__t}{control\+\_\+flow\+\_\+t}} \texorpdfstring{$\ast$}{*}cf)
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}initialisation d\textquotesingle{}une structure de contrôle de flux. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{processus_8c_a94c765782922d36e51dff3b405599440}{add\+\_\+processus}} (\mbox{\hyperlink{structcommand__line__t}{command\+\_\+line\+\_\+t}} \texorpdfstring{$\ast$}{*}cmdl, \mbox{\hyperlink{processus_8h_a98cbfef0df69b9f91082949f5e1848f6}{control\+\_\+flow\+\_\+mode\+\_\+t}} mode)
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}ajout d\textquotesingle{}un processus à la structure de contrôle de flux. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{processus_8c_aa9f56dfdaa4b7d5ae27ae25cf7759d40}{next\+\_\+processus}} (\mbox{\hyperlink{structcommand__line__t}{command\+\_\+line\+\_\+t}} \texorpdfstring{$\ast$}{*}cmdl)
+\begin{DoxyCompactList}\small\item\em Fonction de récupération du prochain processus à exécuter selon le contrôle de flux. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{processus_8c_acaa3a2e3b33a07ab1d32fb5d2ac6dbc2}{add\+\_\+fd}} (\mbox{\hyperlink{structcommand__line__t}{command\+\_\+line\+\_\+t}} \texorpdfstring{$\ast$}{*}cmdl, int fd)
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}ajout d\textquotesingle{}un descripteur de fichier à la structure de contrôle de flux. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{processus_8c_ad9a75221e5e6ddb62b4e9cdc1a9f09ba}{close\+\_\+fds}} (\mbox{\hyperlink{structcommand__line__t}{command\+\_\+line\+\_\+t}} \texorpdfstring{$\ast$}{*}cmdl)
+\begin{DoxyCompactList}\small\item\em Fonction de fermeture des descripteurs de fichiers listés dans la structure de contrôle de flux. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{processus_8c_abdbe7e802143b3e4122d652acbc74b7d}{init\+\_\+command\+\_\+line}} (\mbox{\hyperlink{structcommand__line__t}{command\+\_\+line\+\_\+t}} \texorpdfstring{$\ast$}{*}cmdl)
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}initialisation d\textquotesingle{}une structure de ligne de commande. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{processus_8c_a33203f5945de8fa472f72622d222926b}{launch\+\_\+command\+\_\+line}} (\mbox{\hyperlink{structcommand__line__t}{command\+\_\+line\+\_\+t}} \texorpdfstring{$\ast$}{*}cmdl)
+\begin{DoxyCompactList}\small\item\em Fonction de lancement d\textquotesingle{}une ligne de commande. \end{DoxyCompactList}\item 
+\Hypertarget{processus_8c_aa30966c65b76b20cf8ec97d9751d826f}\label{processus_8c_aa30966c65b76b20cf8ec97d9751d826f} 
+void {\bfseries free\+\_\+processus} (\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}p)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Implementation of process management functions. 
+
+\begin{DoxyAuthor}{Auteur}
+Nom1 
+
+Nom2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/26
+\end{DoxyDate}
+Implémentation des fonctions de gestion des processus. 
+
+\doxysubsection{Documentation des macros}
+\Hypertarget{processus_8c_a816ccaf3e5e64cc98f2b5613cc177398}\label{processus_8c_a816ccaf3e5e64cc98f2b5613cc177398} 
+\index{processus.c@{processus.c}!MAX\_FDS@{MAX\_FDS}}
+\index{MAX\_FDS@{MAX\_FDS}!processus.c@{processus.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_FDS}{MAX\_FDS}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+FDS~32}
+
+
+
+Fonction d\textquotesingle{}initialisation d\textquotesingle{}une structure de processus. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em proc} & Pointeur vers la structure de processus à initialiser. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur.
+\end{DoxyReturn}
+Cette fonction initialise les champs de la structure avec les valeurs suivantes\+:
+\begin{DoxyItemize}
+\item {\itshape pid}\+: 0
+\item {\itshape argv}\+: \{NULL\}
+\item {\itshape envp}\+: \{NULL\}
+\item {\itshape path}\+: NULL
+\item {\itshape stdin\+\_\+fd}\+: 0
+\item {\itshape stdout\+\_\+fd}\+: 1
+\item {\itshape stderr\+\_\+fd}\+: 2
+\item {\itshape status}\+: 0
+\item {\itshape is\+\_\+background}\+: 0
+\item {\itshape start\+\_\+time}\+: \{0\}
+\item {\itshape end\+\_\+time}\+: \{0\}
+\item {\itshape cf}\+: NULL 
+\end{DoxyItemize}
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{processus_8c_acaa3a2e3b33a07ab1d32fb5d2ac6dbc2}\label{processus_8c_acaa3a2e3b33a07ab1d32fb5d2ac6dbc2} 
+\index{processus.c@{processus.c}!add\_fd@{add\_fd}}
+\index{add\_fd@{add\_fd}!processus.c@{processus.c}}
+\doxysubsubsection{\texorpdfstring{add\_fd()}{add\_fd()}}
+{\footnotesize\ttfamily int add\+\_\+fd (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcommand__line__t}{command\+\_\+line\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cmdl,  }\item[{int}]{fd }\end{DoxyParamCaption})}
+
+
+
+Fonction d\textquotesingle{}ajout d\textquotesingle{}un descripteur de fichier à la structure de contrôle de flux. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cmdl} & Pointeur vers la structure de ligne de commande. \\
+\hline
+{\em fd} & Descripteur de fichier à ajouter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur (tableau plein ou fd invalide).
+\end{DoxyReturn}
+Cette fonction ajoute le descripteur de fichier {\itshape fd} au tableau {\itshape opened\+\_\+descriptors} de la structure {\itshape cf}. Si le tableau est plein ou si {\itshape fd} est invalide (négatif), la fonction retourne -\/1 \Hypertarget{processus_8c_a94c765782922d36e51dff3b405599440}\label{processus_8c_a94c765782922d36e51dff3b405599440} 
+\index{processus.c@{processus.c}!add\_processus@{add\_processus}}
+\index{add\_processus@{add\_processus}!processus.c@{processus.c}}
+\doxysubsubsection{\texorpdfstring{add\_processus()}{add\_processus()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*} add\+\_\+processus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcommand__line__t}{command\+\_\+line\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cmdl,  }\item[{\mbox{\hyperlink{processus_8h_a98cbfef0df69b9f91082949f5e1848f6}{control\+\_\+flow\+\_\+mode\+\_\+t}}}]{mode }\end{DoxyParamCaption})}
+
+
+
+Fonction d\textquotesingle{}ajout d\textquotesingle{}un processus à la structure de contrôle de flux. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cmdl} & Pointeur vers la structure de ligne de commande dans laquelle le processus doit être ajouté. \\
+\hline
+{\em mode} & Mode d\textquotesingle{}ajout (UNCONDITIONAL, ON\+\_\+\+SUCCESS, ON\+\_\+\+FAILURE). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+processus\+\_\+t\texorpdfstring{$\ast$}{*} Pointeur vers le processus ajouté, ou NULL en cas d\textquotesingle{}erreur (tableau plein par exemple).
+\end{DoxyReturn}
+Cette fonction ajoute le processus {\itshape proc} à la structure de contrôle de flux {\itshape cf} selon le mode spécifié\+: Le dernier élément du tableau {\itshape commands} est retourné après avoir été initialisé dans le dernier élément du tableau {\itshape flow}. Cette structure \doxylink{structcontrol__flow__t}{control\+\_\+flow\+\_\+t} est mise à jour pour que le champ {\itshape proc} pointe vers le processus ajouté et la liste est mise à jour de la manière suivante \+:
+\begin{DoxyItemize}
+\item Si {\itshape mode} est UNCONDITIONAL, {\itshape proc} est ajouté à la liste des processus à exécuter inconditionnellement après le processus courant.
+\item Si {\itshape mode} est ON\+\_\+\+SUCCESS, {\itshape proc} est ajouté à la liste des processus à exécuter uniquement si le processus courant s\textquotesingle{}est terminé avec succès (code de retour 0).
+\item Si {\itshape mode} est ON\+\_\+\+FAILURE, {\itshape proc} est ajouté à la liste des processus à exécuter uniquement si le processus courant s\textquotesingle{}est terminé avec un échec (code de retour non nul). 
+\end{DoxyItemize}\Hypertarget{processus_8c_ad9a75221e5e6ddb62b4e9cdc1a9f09ba}\label{processus_8c_ad9a75221e5e6ddb62b4e9cdc1a9f09ba} 
+\index{processus.c@{processus.c}!close\_fds@{close\_fds}}
+\index{close\_fds@{close\_fds}!processus.c@{processus.c}}
+\doxysubsubsection{\texorpdfstring{close\_fds()}{close\_fds()}}
+{\footnotesize\ttfamily int close\+\_\+fds (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcommand__line__t}{command\+\_\+line\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cmdl }\end{DoxyParamCaption})}
+
+
+
+Fonction de fermeture des descripteurs de fichiers listés dans la structure de contrôle de flux. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cmdl} & Pointeur vers la structure de ligne de commande. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur.
+\end{DoxyReturn}
+Cette fonction ferme tous les descripteurs de fichiers listés dans le tableau {\itshape opened\+\_\+descriptors} de la structure {\itshape cf}. Après fermeture, les entrées du tableau sont remises à -\/1. \Hypertarget{processus_8c_abdbe7e802143b3e4122d652acbc74b7d}\label{processus_8c_abdbe7e802143b3e4122d652acbc74b7d} 
+\index{processus.c@{processus.c}!init\_command\_line@{init\_command\_line}}
+\index{init\_command\_line@{init\_command\_line}!processus.c@{processus.c}}
+\doxysubsubsection{\texorpdfstring{init\_command\_line()}{init\_command\_line()}}
+{\footnotesize\ttfamily int init\+\_\+command\+\_\+line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcommand__line__t}{command\+\_\+line\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cmdl }\end{DoxyParamCaption})}
+
+
+
+Fonction d\textquotesingle{}initialisation d\textquotesingle{}une structure de ligne de commande. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cmdl} & Pointeur vers la structure de ligne de commande à initialiser. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur.
+\end{DoxyReturn}
+Cette fonction initialise les champs de la structure avec les valeurs suivantes\+:
+\begin{DoxyItemize}
+\item {\itshape command\+\_\+line}\+: "{}\textbackslash{}0"{}
+\item {\itshape tokens}\+: \{NULL\}
+\item {\itshape commands}\+: tableau de processus initialisés via {\itshape \doxylink{processus_8c_a9de855396463362feef85246c5055741}{init\+\_\+processus()}}
+\item {\itshape flow}\+: tableau de contrôle de flux initialisé via {\itshape \doxylink{processus_8c_aa7be566c887f63f8962473eb35662e5a}{init\+\_\+control\+\_\+flow()}}
+\item {\itshape num\+\_\+commands}\+: 0
+\item {\itshape opened\+\_\+descriptors}\+: \{-\/1\} 
+\end{DoxyItemize}\Hypertarget{processus_8c_aa7be566c887f63f8962473eb35662e5a}\label{processus_8c_aa7be566c887f63f8962473eb35662e5a} 
+\index{processus.c@{processus.c}!init\_control\_flow@{init\_control\_flow}}
+\index{init\_control\_flow@{init\_control\_flow}!processus.c@{processus.c}}
+\doxysubsubsection{\texorpdfstring{init\_control\_flow()}{init\_control\_flow()}}
+{\footnotesize\ttfamily int init\+\_\+control\+\_\+flow (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcontrol__flow__t}{control\+\_\+flow\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cf }\end{DoxyParamCaption})}
+
+
+
+Fonction d\textquotesingle{}initialisation d\textquotesingle{}une structure de contrôle de flux. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cf} & Pointeur vers la structure de contrôle de flux à initialiser. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur.
+\end{DoxyReturn}
+Cette fonction initialise les champs de la structure avec les valeurs suivantes\+:
+\begin{DoxyItemize}
+\item {\itshape proc}\+: NULL
+\item {\itshape unconditionnal\+\_\+next}\+: NULL
+\item {\itshape on\+\_\+success\+\_\+next}\+: NULL
+\item {\itshape on\+\_\+failure\+\_\+next}\+: NULL
+\item {\itshape cmdl}\+: NULL 
+\end{DoxyItemize}\Hypertarget{processus_8c_a9de855396463362feef85246c5055741}\label{processus_8c_a9de855396463362feef85246c5055741} 
+\index{processus.c@{processus.c}!init\_processus@{init\_processus}}
+\index{init\_processus@{init\_processus}!processus.c@{processus.c}}
+\doxysubsubsection{\texorpdfstring{init\_processus()}{init\_processus()}}
+{\footnotesize\ttfamily int init\+\_\+processus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{proc }\end{DoxyParamCaption})}
+
+
+
+Fonction d\textquotesingle{}initialisation d\textquotesingle{}une structure de processus. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em proc} & Pointeur vers la structure de processus à initialiser. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur.
+\end{DoxyReturn}
+Cette fonction initialise les champs de la structure avec les valeurs suivantes\+:
+\begin{DoxyItemize}
+\item {\itshape pid}\+: 0
+\item {\itshape argv}\+: \{NULL\}
+\item {\itshape envp}\+: \{NULL\}
+\item {\itshape path}\+: NULL
+\item {\itshape stdin\+\_\+fd}\+: 0
+\item {\itshape stdout\+\_\+fd}\+: 1
+\item {\itshape stderr\+\_\+fd}\+: 2
+\item {\itshape status}\+: 0
+\item {\itshape is\+\_\+background}\+: 0
+\item {\itshape invert}\+: 0
+\item {\itshape start\+\_\+time}\+: \{0\}
+\item {\itshape end\+\_\+time}\+: \{0\}
+\item {\itshape cf}\+: NULL 
+\end{DoxyItemize}\Hypertarget{processus_8c_a33203f5945de8fa472f72622d222926b}\label{processus_8c_a33203f5945de8fa472f72622d222926b} 
+\index{processus.c@{processus.c}!launch\_command\_line@{launch\_command\_line}}
+\index{launch\_command\_line@{launch\_command\_line}!processus.c@{processus.c}}
+\doxysubsubsection{\texorpdfstring{launch\_command\_line()}{launch\_command\_line()}}
+{\footnotesize\ttfamily int launch\+\_\+command\+\_\+line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcommand__line__t}{command\+\_\+line\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cmdl }\end{DoxyParamCaption})}
+
+
+
+Fonction de lancement d\textquotesingle{}une ligne de commande. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cmdl} & Pointeur vers la structure de ligne de commande à lancer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, un code d\textquotesingle{}erreur sinon.
+\end{DoxyReturn}
+Cette fonction lance les processus selon le flux défini dans la structure {\itshape cmdl}. Les lancements sont effectués via {\itshape \doxylink{processus_8c_af64b28bf32de91947039dd43e6b34d22}{launch\+\_\+processus()}} en respectant les conditions de contrôle de flux (inconditionnel, en cas de succès, en cas d\textquotesingle{}échec). Le tableau {\itshape opened\+\_\+descriptors} est utilisé pour fermer les descripteurs ouverts au moment de l\textquotesingle{}initialisation des structures \doxylink{structprocessus__t}{processus\+\_\+t}. La fonction retourne 0 si tous les processus à lancer en fonction du contrôle de flux ont pu être lancés sans erreur. \Hypertarget{processus_8c_af64b28bf32de91947039dd43e6b34d22}\label{processus_8c_af64b28bf32de91947039dd43e6b34d22} 
+\index{processus.c@{processus.c}!launch\_processus@{launch\_processus}}
+\index{launch\_processus@{launch\_processus}!processus.c@{processus.c}}
+\doxysubsubsection{\texorpdfstring{launch\_processus()}{launch\_processus()}}
+{\footnotesize\ttfamily int launch\+\_\+processus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{proc }\end{DoxyParamCaption})}
+
+
+
+Fonction de lancement d\textquotesingle{}un processus à partir d\textquotesingle{}une structure de processus. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em proc} & Pointeur vers la structure de processus à lancer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, un code d\textquotesingle{}erreur sinon.
+\end{DoxyReturn}
+Cette fonction utilise {\itshape fork()} et {\itshape execve()} pour lancer le processus décrit par la structure. Elle gère également les redirections des IOs standards (via {\itshape dup2()}). En cas de succès, le champ {\itshape pid} de la structure est mis à jour avec le PID du processus fils. Le flag {\itshape is\+\_\+background} détermine si on attend la fin du processus ou non. La valeur de {\itshape status} est mise à jour à l\textquotesingle{}issue de l\textquotesingle{}exécution avec le code de retour du processus fils lorsque le flag {\itshape is\+\_\+background} est désactivé. Les temps de démarrage et d\textquotesingle{}arrêt sont enregistrés dans {\itshape start\+\_\+time} et {\itshape end\+\_\+time} respectivement. {\itshape end\+\_\+time} est mis à jour uniquement si {\itshape is\+\_\+background} est désactivé. Les descripteurs de fichiers ouverts sont gérés dans {\itshape cf-\/\texorpdfstring{$>$}{>}cmdl-\/\texorpdfstring{$>$}{>}opened\+\_\+descriptors} \+: le processus "{}fils"{} ferme tous les descripteurs listés dans ce tableau avant d\textquotesingle{}exécuter la commande. \Hypertarget{processus_8c_aa9f56dfdaa4b7d5ae27ae25cf7759d40}\label{processus_8c_aa9f56dfdaa4b7d5ae27ae25cf7759d40} 
+\index{processus.c@{processus.c}!next\_processus@{next\_processus}}
+\index{next\_processus@{next\_processus}!processus.c@{processus.c}}
+\doxysubsubsection{\texorpdfstring{next\_processus()}{next\_processus()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*} next\+\_\+processus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcommand__line__t}{command\+\_\+line\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cmdl }\end{DoxyParamCaption})}
+
+
+
+Fonction de récupération du prochain processus à exécuter selon le contrôle de flux. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cmdl} & Pointeur vers la structure de ligne de commande. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+processus\+\_\+t\texorpdfstring{$\ast$}{*} Pointeur vers le prochain processus à exécuter, ou NULL si le nombre maximum est atteint.
+\end{DoxyReturn}
+Cette fonction retourne un pointeur vers la structure \doxylink{structprocessus__t}{processus\+\_\+t} dans le tableau {\itshape commands} situé à l\textquotesingle{}indice {\itshape num\+\_\+commands + 1}. Si le nombre maximum de commandes est atteint (MAX\+\_\+\+CMDS), la fonction retourne NULL. Cela permet notamment d\textquotesingle{}initialiser les descripteurs des IOs standards qui dépendent du processus en court de traitement (dans le cas des pipes par exemple). 

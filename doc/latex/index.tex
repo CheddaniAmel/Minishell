@@ -1,0 +1,72 @@
+\chapter{Projet minishell}
+\hypertarget{index}{}\label{index}\index{Projet minishell@{Projet minishell}}
+\label{index_md_doc_2projet}%
+\Hypertarget{index_md_doc_2projet}%
+ \hypertarget{index_autotoc_md1}{}\doxysubsection{\texorpdfstring{Objectifs}{Objectifs}}\label{index_autotoc_md1}
+L\textquotesingle{}objectif du projet est d\textquotesingle{}implémenter un shell Unix très élémentaire. Il permettra au minimum de gérer \+:
+\begin{DoxyItemize}
+\item L\textquotesingle{}exécution de commandes simples avec leurs arguments
+\begin{DoxyItemize}
+\item En avant plan \+: {\itshape cmd arg1 arg2 ...}
+\item En arrière plan \+: {\itshape cmd arg1 arg2 ... \&}
+\item L\textquotesingle{}exécution avec inversion succès/échec \+: {\itshape ! cmd arg1 arg2 ...}
+\end{DoxyItemize}
+\item L\textquotesingle{}exécution inconditionnelle d\textquotesingle{}une suite de commandes \+:
+\begin{DoxyItemize}
+\item En avant plan \+: {\itshape cmd1 arg1\+\_\+1 arg1\+\_\+2 ... ; cmd2 arg2\+\_\+1 arg2\+\_\+2 ... ; ... ; cmdn argn\+\_\+1 argn\+\_\+2 ...}
+\item En arrière plan \+: {\itshape cmd1 arg1\+\_\+1 arg1\+\_\+2 ... \& cmd2 arg2\+\_\+1 arg2\+\_\+2 ... \& ... \& cmdn argn\+\_\+1 argn\+\_\+2 ...}
+\item La combinaision des deux \+: {\itshape cmd1 arg1\+\_\+1 arg1\+\_\+2 ... ; cmd2 arg2\+\_\+1 arg2\+\_\+2 ... \& cmd3 arg3\+\_\+1 arg3\+\_\+2 ... ; ... \& cmdn argn\+\_\+1 argn\+\_\+2 ...}
+\end{DoxyItemize}
+\item Les exécutions conditionnelles de suites de commandes \+:
+\begin{DoxyItemize}
+\item Exécution en cas de succès \+: {\itshape cmd1 arg1\+\_\+1 arg1\+\_\+2 \&\& cmd2 arg2\+\_\+1 arg2\+\_\+2 ... \&\& cmdn argn\+\_\+1 argn\+\_\+2 ...}
+\item Exécution en cas d\textquotesingle{}échec \+: {\itshape cmd1 arg1\+\_\+1 arg1\+\_\+2 \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} cmd2 arg2\+\_\+1 arg2\+\_\+2 ... \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} cmdn argn\+\_\+1 argn\+\_\+2 ...}
+\item Avec inversion éventuelle \+: {\itshape ! cmd1 arg1\+\_\+1}
+\item La combinaison des trois \+: {\itshape cmd1 arg1\+\_\+1 arg1\+\_\+2 \&\& ! cmd2 arg2\+\_\+1 arg2\+\_\+2 \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} cmd3 arg3\+\_\+1 arg3\+\_\+2 ... \&\& cmdn argn\+\_\+1 argn\+\_\+2 ...}
+\end{DoxyItemize}
+\item Les combinaisons de suites de commandes conditionnelles/inconditionnelles \+: {\itshape cmd1 arg1\+\_\+1 arg1\+\_\+2 ... ; cmd2 arg2\+\_\+1 arg2\+\_\+2 ... \&\& cmd3 arg3\+\_\+1 arg3\+\_\+2 ... \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} cmd4 arg4\+\_\+1 arg4\+\_\+2 \& ... \& cmdn argn/\+\_\+1 argn\+\_\+2 ...}
+\item Les redirections des IOs des processus \+:
+\begin{DoxyItemize}
+\item La redirection de l\textquotesingle{}entrée standard \+: {\itshape cmd arg1 arg2 ... \texorpdfstring{$<$}{<} input}
+\item La redirection de la sortie standard en mode "{}remplacement"{} \+: {\itshape cmd arg1 arg2 ... \texorpdfstring{$>$}{>} output}
+\item La redirection de la sortie standard en mode "{}ajout"{} \+: {\itshape cmd arg1 arg2 ... \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} output}
+\item La redirection de la sortie d\textquotesingle{}erreur en mode "{}remplacement"{} \+: {\itshape cmd arg1 arg2 ... \texorpdfstring{$>$}{>} error}
+\item La redirection de la sortie d\textquotesingle{}erreur en mode "{}ajout"{} \+: {\itshape cmd arg1 arg2 ... \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} error}
+\item La redirection de la sortie standard vers la sortie d\textquotesingle{}erreur \+: {\itshape cmd arg1 arg2 ... \texorpdfstring{$>$}{>}\&2}
+\item {\itshape La redirection de la sortie d\textquotesingle{}erreur vers la sortie standard \+: \+\_\+cmd arg1 arg2 ... 2\texorpdfstring{$>$}{>}\&1}
+\item Les redirections via un tube \+: {\itshape cmd1 arg1\+\_\+1 arg1\+\_\+2 ... \texorpdfstring{$\vert$}{|} cmd2 arg2\+\_\+1 arg2\+\_\+2 ...}
+\item Les compositions de redirections \+: {\itshape cmd1 arg1\+\_\+1 arg1\+\_\+2 ... 2\texorpdfstring{$>$}{>}\&1 \texorpdfstring{$<$}{<} input \texorpdfstring{$\vert$}{|} cmd2 arg2\+\_\+1 arg2\+\_\+2 ... 2\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} error \texorpdfstring{$>$}{>} output ...}
+\end{DoxyItemize}
+\item Les commandes intégrées avec gestion des redirections éventuelles \+:
+\begin{DoxyItemize}
+\item cd \+: déplacement du Current Working Directory (CWD) dans le système de fichier
+\item exit \mbox{[}val\mbox{]} \+: sortie du shell avec le code (optionnel) {\itshape val}.
+\item export {\itshape VAR=val} \+: définition de variables d\textquotesingle{}environnement {\itshape VAR}.
+\item unset {\itshape VAR} \+: suppression de la variable d\textquotesingle{}environnement {\itshape VAR}.
+\item pwd \+: affichage du CWD.
+\end{DoxyItemize}
+\item Les combinaisons de tout ce qui précède \+: {\itshape cmd1 arg1\+\_\+1 arg1\+\_\+2 ... \texorpdfstring{$<$}{<} input \&\& cmd2 arg2\+\_\+1 arg2\+\_\+2 ... \texorpdfstring{$\vert$}{|} cmd3 arg3\+\_\+1 arg3\+\_\+2 ... 2\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} error \texorpdfstring{$>$}{>} output \& cmd4 arg4\+\_\+1 arg4\+\_\+2 ... \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} cmd5 arg5\+\_\+1 arg5\+\_\+2 ... ; ...}
+\end{DoxyItemize}\hypertarget{index_autotoc_md2}{}\doxysubsection{\texorpdfstring{Code fourni}{Code fourni}}\label{index_autotoc_md2}
+Pour la réalisation du projet un "{}squelette"{} du code vous est fourni. {\bfseries{Son utilisation est obligatoire.}} Les fichiers suivants sont fournis \+:
+\begin{DoxyItemize}
+\item \doxylink{processus_8h}{\`{}include/processus.h\`{}} et \doxylink{processus_8c}{\`{}src/processus.c\`{}} \+: définition des structures et fonctions de gestion des processus et de leurs enchaînements en fonction du flux d\textquotesingle{}instruction.
+\item \doxylink{parser_8h}{\`{}include/parser.h\`{}} et \doxylink{parser_8c}{\`{}src/parser.c\`{}} \+: fonctions d\textquotesingle{}analyse et de traduction des commandes en flux d\textquotesingle{}instructions dans les structure de \doxylink{processus_8h}{\`{}include/processus.h\`{}}.
+\item \doxylink{builtins_8h}{\`{}include/builtins.h\`{}} et \doxylink{builtins_8c}{\`{}src/builtins.c\`{}} \+: gestion des commandes intégrées du shell.
+\item \doxylink{main_8c}{\`{}src/main.c\`{}} \+: implémentation de la boucle générale du shell.
+\end{DoxyItemize}
+
+La fonction \doxylink{parser_8c_ac1f113b9a5d497bcc6853c555643c10c}{parse\+\_\+command\+\_\+line()} contient des exemples pour l\textquotesingle{}implémentation des opérateurs du shell (\textquotesingle{};\textquotesingle{} et \textquotesingle{}\texorpdfstring{$<$}{<}\textquotesingle{}), il s\textquotesingle{}agit donc essentiellement de bien comprendre la structure de données et réfléchir à ce que signifie un opérateur sur l\textquotesingle{}initialisation de celle-\/ci.\hypertarget{index_autotoc_md3}{}\doxysubsection{\texorpdfstring{Compilation et création de la documentation}{Compilation et création de la documentation}}\label{index_autotoc_md3}
+Un fichier Makefile est fourni afin de simplifier la compilation du projet. Une commande {\ttfamily make} à la racine du projet provoque la compilation de celui-\/ci avec la production d\textquotesingle{}un exécutable nommé {\ttfamily minishell}. Une commande {\ttfamily make doc} crée la documentation dans le répertoire {\ttfamily doc/} via l\textquotesingle{}outil \href{http://www.doxygen.nl}{\texttt{ {\ttfamily doxygen}}}.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$ make} \+: compilation des sources et création de l\textquotesingle{}exécutable {\ttfamily minishell}
+\item {\ttfamily \$ make doc} \+: création de la documentation dans le répertoire {\ttfamily doc/html} si l\textquotesingle{}outil \href{http://www.doxygen.nl}{\texttt{ {\ttfamily doxygen}}} est installé.
+\item {\ttfamily \$ make clean} \+: suppression de tous les fichiers objets {\ttfamily .o}
+\item {\ttfamily \$ make deepclean} \+: suppression de tous les fichiers objets, de l\textquotesingle{}exécutable {\ttfamily minishell} et de la documentation.
+\end{DoxyItemize}\hypertarget{index_autotoc_md4}{}\doxysubsection{\texorpdfstring{Rendu}{Rendu}}\label{index_autotoc_md4}
+Tous les fichiers sources rendus doivent comporter les noms et prénoms {\bfseries{des deux binômes}} dans l\textquotesingle{}en-\/tête du fichier. Vous nommerez le répertoire du projet de la manière suivante \+: {\ttfamily \texorpdfstring{$<$}{<}numéro de binôme\texorpdfstring{$>$}{>}\+\_\+\+Nom1\+\_\+\+Nom2} Et l\textquotesingle{}archive de celui-\/ci \+: {\ttfamily \texorpdfstring{$<$}{<}numéro de binôme\texorpdfstring{$>$}{>}\+\_\+\+Nom1\+\_\+\+Nom2.\mbox{[}zip\texorpdfstring{$\vert$}{|}tar.gz\texorpdfstring{$\vert$}{|}tar.bz2\texorpdfstring{$\vert$}{|}tar.xz\mbox{]}} Le format de l\textquotesingle{}archive doit être {\bfseries{exclusivement}} {\ttfamily .zip}, {\ttfamily .tar.\+gz}, {\ttfamily tar.\+bz2} ou {\ttfamily tar.\+xz} {\bfseries{à l\textquotesingle{}exclusion de tout autre format}}.
+
+Par exemple, le binôme n°2 constitué de Jean Martin et Marie Dupont, rend un projet regroupé dans le répertoire {\ttfamily 02\+\_\+\+Martin\+\_\+\+Dupont} compressé dans l\textquotesingle{}archive nommée {\ttfamily 02\+\_\+\+Martin\+\_\+\+Dupont.\+tar.\+xz}.
+
+Vous prendrez soin de ne rendre que les fichiers sources (i.\+e. ni l\textquotesingle{}exécutable ni les fichiers objets, ni la documentation créée par \href{http://www.doxygen.nl}{\texttt{ {\ttfamily doxygen}}}). 

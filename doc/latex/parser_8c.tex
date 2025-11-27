@@ -1,0 +1,193 @@
+\doxysection{Référence du fichier src/parser.c}
+\hypertarget{parser_8c}{}\label{parser_8c}\index{src/parser.c@{src/parser.c}}
+
+
+Implementation of command line parsing.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include "{}parser.\+h"{}}\newline
+{\ttfamily \#include "{}processus.\+h"{}}\newline
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{parser_8c_af3bac5e66a3099ac5a375c6abe1fb2c3}{trim}} (char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Fonction de suppression des espaces inutiles au début et à la fin d\textquotesingle{}une chaîne de caractères. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{parser_8c_a884ea722b2e695936cfa6b0ee00d11c3}{clean}} (char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Fonction de nettoyage d\textquotesingle{}une chaîne de caractères en supprimant les doublons d\textquotesingle{}espaces. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{parser_8c_aa642f32e314f6164a0094c312f640f21}{separate\+\_\+s}} (char \texorpdfstring{$\ast$}{*}str, char \texorpdfstring{$\ast$}{*}s, size\+\_\+t max)
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}ajout de caractères d\textquotesingle{}espacement autour de tous les caractères de la chaîne {\itshape s} présents dans {\itshape str}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{parser_8c_a2ff627a35bb7947298fb5bc342731a57}{replace}} (char \texorpdfstring{$\ast$}{*}str, const char \texorpdfstring{$\ast$}{*}s, const char \texorpdfstring{$\ast$}{*}t, size\+\_\+t max)
+\begin{DoxyCompactList}\small\item\em Fonction de remplacement de toutes les occurrences de la sous-\/chaîne {\itshape s} par la sous-\/chaîne {\itshape t} dans la chaîne {\itshape str}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{parser_8c_a23ba240bddff4480e06168d526be24ea}{substenv}} (char \texorpdfstring{$\ast$}{*}str, size\+\_\+t max)
+\begin{DoxyCompactList}\small\item\em Fonction de substitution des variables d\textquotesingle{}environnement dans une chaîne de caractères. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{parser_8c_a248f7947bfc62206b93fa8fa24bc033c}{strcut}} (char \texorpdfstring{$\ast$}{*}str, char sep, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}tokens, size\+\_\+t max)
+\begin{DoxyCompactList}\small\item\em Fonction de découpage d\textquotesingle{}une chaîne de caractères en tokens selon un séparateur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{parser_8c_ac1f113b9a5d497bcc6853c555643c10c}{parse\+\_\+command\+\_\+line}} (\mbox{\hyperlink{structcommand__line__t}{command\+\_\+line\+\_\+t}} \texorpdfstring{$\ast$}{*}cmdl, const char \texorpdfstring{$\ast$}{*}line)
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}analyse d\textquotesingle{}une ligne de commande. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Implementation of command line parsing. 
+
+\begin{DoxyAuthor}{Auteur}
+Nom1 
+
+Nom2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/26
+\end{DoxyDate}
+Implémentation des fonctions d\textquotesingle{}analyse des lignes de commande. 
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{parser_8c_a884ea722b2e695936cfa6b0ee00d11c3}\label{parser_8c_a884ea722b2e695936cfa6b0ee00d11c3} 
+\index{parser.c@{parser.c}!clean@{clean}}
+\index{clean@{clean}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{clean()}{clean()}}
+{\footnotesize\ttfamily int clean (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+
+
+Fonction de nettoyage d\textquotesingle{}une chaîne de caractères en supprimant les doublons d\textquotesingle{}espaces. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em str} & Chaîne de caractères à nettoyer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur. 
+\end{DoxyReturn}
+\Hypertarget{parser_8c_ac1f113b9a5d497bcc6853c555643c10c}\label{parser_8c_ac1f113b9a5d497bcc6853c555643c10c} 
+\index{parser.c@{parser.c}!parse\_command\_line@{parse\_command\_line}}
+\index{parse\_command\_line@{parse\_command\_line}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{parse\_command\_line()}{parse\_command\_line()}}
+{\footnotesize\ttfamily int parse\+\_\+command\+\_\+line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcommand__line__t}{command\+\_\+line\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cmdl,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{line }\end{DoxyParamCaption})}
+
+
+
+Fonction d\textquotesingle{}analyse d\textquotesingle{}une ligne de commande. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cmdl} & Pointeur vers la structure de ligne de commande à remplir. \\
+\hline
+{\em line} & Chaîne de caractères contenant la ligne de commande à analyser. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur (ligne trop longue, trop de commandes, etc.).
+\end{DoxyReturn}
+Cette fonction analyse la ligne de commande {\itshape line} et remplit la structure {\itshape cmdl} avec les informations extraites. La ligne de commande est copiée dans {\itshape cmdl-\/\texorpdfstring{$>$}{>}command\+\_\+line} dans la limite de MAX\+\_\+\+CMD\+\_\+\+LINE caractères. La ligne est ensuite nettoyée (trim, clean, separate\+\_\+s, replace, substenv), puis découpée en tokens. Les tokens sont ensuite utilisés pour remplir les structures \doxylink{structprocessus__t}{processus\+\_\+t} et \doxylink{structcontrol__flow__t}{control\+\_\+flow\+\_\+t} dans {\itshape cmdl}. Si la ligne dépasse la taille maximale ou si le nombre de commandes dépasse MAX\+\_\+\+CMDS, la fonction retourne -\/1. Si une erreur est détectée, les descripteurs de fichiers ouverts sont fermés via close\+\_\+fds(cmdl) avant de retourner -\/1. \Hypertarget{parser_8c_a2ff627a35bb7947298fb5bc342731a57}\label{parser_8c_a2ff627a35bb7947298fb5bc342731a57} 
+\index{parser.c@{parser.c}!replace@{replace}}
+\index{replace@{replace}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{replace()}{replace()}}
+{\footnotesize\ttfamily int replace (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{s,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{t,  }\item[{size\+\_\+t}]{max }\end{DoxyParamCaption})}
+
+
+
+Fonction de remplacement de toutes les occurrences de la sous-\/chaîne {\itshape s} par la sous-\/chaîne {\itshape t} dans la chaîne {\itshape str}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em str} & Chaîne de caractères à traiter. \\
+\hline
+{\em s} & Sous-\/chaîne à remplacer. \\
+\hline
+{\em t} & Sous-\/chaîne de remplacement. \\
+\hline
+{\em max} & Taille maximale de la chaîne {\itshape str}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur (dépassement de taille).
+\end{DoxyReturn}
+Cette fonction remplace toutes les occurrences de la sous-\/chaîne {\itshape s} par la sous-\/chaîne {\itshape t} dans la chaîne {\itshape str}. Si le remplacement dépasse la taille maximale {\itshape max}, la fonction retourne -\/1. \Hypertarget{parser_8c_aa642f32e314f6164a0094c312f640f21}\label{parser_8c_aa642f32e314f6164a0094c312f640f21} 
+\index{parser.c@{parser.c}!separate\_s@{separate\_s}}
+\index{separate\_s@{separate\_s}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{separate\_s()}{separate\_s()}}
+{\footnotesize\ttfamily int separate\+\_\+s (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str,  }\item[{char \texorpdfstring{$\ast$}{*}}]{s,  }\item[{size\+\_\+t}]{max }\end{DoxyParamCaption})}
+
+
+
+Fonction d\textquotesingle{}ajout de caractères d\textquotesingle{}espacement autour de tous les caractères de la chaîne {\itshape s} présents dans {\itshape str}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em str} & Chaîne de caractères à traiter. \\
+\hline
+{\em s} & Chaîne de caractères contenant les séparateurs. \\
+\hline
+{\em max} & Taille maximale de la chaîne {\itshape str}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur (dépassement de taille).
+\end{DoxyReturn}
+Cette fonction ajoute un espace avant et après chaque occurrence d\textquotesingle{}un caractère de {\itshape s} dans {\itshape str}. Si l\textquotesingle{}ajout d\textquotesingle{}espaces dépasse la taille maximale {\itshape max}, la fonction retourne -\/1. \Hypertarget{parser_8c_a248f7947bfc62206b93fa8fa24bc033c}\label{parser_8c_a248f7947bfc62206b93fa8fa24bc033c} 
+\index{parser.c@{parser.c}!strcut@{strcut}}
+\index{strcut@{strcut}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{strcut()}{strcut()}}
+{\footnotesize\ttfamily int strcut (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str,  }\item[{char}]{sep,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{tokens,  }\item[{size\+\_\+t}]{max }\end{DoxyParamCaption})}
+
+
+
+Fonction de découpage d\textquotesingle{}une chaîne de caractères en tokens selon un séparateur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em str} & Chaîne de caractères à découper. Attention, cette chaîne est modifiée par la fonction. \\
+\hline
+{\em sep} & Caractère séparateur. \\
+\hline
+{\em tokens} & Tableau de chaînes de caractères pour stocker les tokens extraits. Le tableau est terminé par un pointeur NULL. \\
+\hline
+{\em max} & Taille maximale du tableau {\itshape tokens}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int Nombre de tokens extraits, -\/1 en cas d\textquotesingle{}erreur (dépassement de taille).
+\end{DoxyReturn}
+Cette fonction découpe la chaîne {\itshape str} en tokens en utilisant le caractère {\itshape sep} comme séparateur. Les tokens extraits sont stockés dans le tableau {\itshape tokens}. Si le nombre de tokens dépasse la taille maximale {\itshape max}, la fonction retourne -\/1. \Hypertarget{parser_8c_a23ba240bddff4480e06168d526be24ea}\label{parser_8c_a23ba240bddff4480e06168d526be24ea} 
+\index{parser.c@{parser.c}!substenv@{substenv}}
+\index{substenv@{substenv}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{substenv()}{substenv()}}
+{\footnotesize\ttfamily int substenv (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str,  }\item[{size\+\_\+t}]{max }\end{DoxyParamCaption})}
+
+
+
+Fonction de substitution des variables d\textquotesingle{}environnement dans une chaîne de caractères. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em str} & Chaîne de caractères à traiter. \\
+\hline
+{\em max} & Taille maximale de la chaîne {\itshape str}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur (dépassement de taille).
+\end{DoxyReturn}
+Cette fonction remplace toutes les occurrences de variables d\textquotesingle{}environnement au format \$\+VAR ou \$\{VAR\} par leur valeur dans la chaîne {\itshape str}. Si une variable n\textquotesingle{}existe pas, elle est remplacée par une chaîne vide. Si le remplacement dépasse la taille maximale {\itshape max}, la fonction retourne -\/1. \Hypertarget{parser_8c_af3bac5e66a3099ac5a375c6abe1fb2c3}\label{parser_8c_af3bac5e66a3099ac5a375c6abe1fb2c3} 
+\index{parser.c@{parser.c}!trim@{trim}}
+\index{trim@{trim}!parser.c@{parser.c}}
+\doxysubsubsection{\texorpdfstring{trim()}{trim()}}
+{\footnotesize\ttfamily int trim (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+
+
+Fonction de suppression des espaces inutiles au début et à la fin d\textquotesingle{}une chaîne de caractères. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em str} & Chaîne de caractères à traiter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur. 
+\end{DoxyReturn}

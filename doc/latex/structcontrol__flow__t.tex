@@ -1,0 +1,87 @@
+\doxysection{Référence de la structure control\+\_\+flow\+\_\+t}
+\hypertarget{structcontrol__flow__t}{}\label{structcontrol__flow__t}\index{control\_flow\_t@{control\_flow\_t}}
+
+
+Structure de contrôle de flux.  
+
+
+
+
+{\ttfamily \#include $<$processus.\+h$>$}
+
+\doxysubsubsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structcontrol__flow__t_ad0efad4c99beb666bfc4480b762568aa}{proc}}
+\begin{DoxyCompactList}\small\item\em Pointeur vers la structure du processus courant. \end{DoxyCompactList}\item 
+struct control\+\_\+flow \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structcontrol__flow__t_ae8719818e630ee0563ee4ed068bd0643}{unconditionnal\+\_\+next}}
+\begin{DoxyCompactList}\small\item\em Pointeur vers la prochaine structure de processus en cas d\textquotesingle{}exécution inconditionnelle. \end{DoxyCompactList}\item 
+struct control\+\_\+flow \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structcontrol__flow__t_aa9daf3077776be206f5596b95f74f316}{on\+\_\+success\+\_\+next}}
+\begin{DoxyCompactList}\small\item\em Pointeur vers la prochaine structure de processus en cas d\textquotesingle{}exécution réussie. \end{DoxyCompactList}\item 
+struct control\+\_\+flow \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structcontrol__flow__t_a8fa7c532ad427f96bacb4d68980d3f9a}{on\+\_\+failure\+\_\+next}}
+\begin{DoxyCompactList}\small\item\em Pointeur vers la prochaine structure de processus en cas d\textquotesingle{}échec de l\textquotesingle{}exécution. \end{DoxyCompactList}\item 
+struct command\+\_\+line \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structcontrol__flow__t_a56c3e362b79013c628d0e370d69356c9}{cmdl}}
+\begin{DoxyCompactList}\small\item\em Pointeur vers la structure de ligne de commande associée. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Structure de contrôle de flux. 
+
+Cette structure permet de gérer le flux d\textquotesingle{}exécution des processus. 
+
+\doxysubsection{Documentation des champs}
+\Hypertarget{structcontrol__flow__t_a56c3e362b79013c628d0e370d69356c9}\label{structcontrol__flow__t_a56c3e362b79013c628d0e370d69356c9} 
+\index{control\_flow\_t@{control\_flow\_t}!cmdl@{cmdl}}
+\index{cmdl@{cmdl}!control\_flow\_t@{control\_flow\_t}}
+\doxysubsubsection{\texorpdfstring{cmdl}{cmdl}}
+{\footnotesize\ttfamily struct command\+\_\+line\texorpdfstring{$\ast$}{*} control\+\_\+flow\+\_\+t\+::cmdl}
+
+
+
+Pointeur vers la structure de ligne de commande associée. 
+
+\Hypertarget{structcontrol__flow__t_a8fa7c532ad427f96bacb4d68980d3f9a}\label{structcontrol__flow__t_a8fa7c532ad427f96bacb4d68980d3f9a} 
+\index{control\_flow\_t@{control\_flow\_t}!on\_failure\_next@{on\_failure\_next}}
+\index{on\_failure\_next@{on\_failure\_next}!control\_flow\_t@{control\_flow\_t}}
+\doxysubsubsection{\texorpdfstring{on\_failure\_next}{on\_failure\_next}}
+{\footnotesize\ttfamily struct control\+\_\+flow\texorpdfstring{$\ast$}{*} control\+\_\+flow\+\_\+t\+::on\+\_\+failure\+\_\+next}
+
+
+
+Pointeur vers la prochaine structure de processus en cas d\textquotesingle{}échec de l\textquotesingle{}exécution. 
+
+\Hypertarget{structcontrol__flow__t_aa9daf3077776be206f5596b95f74f316}\label{structcontrol__flow__t_aa9daf3077776be206f5596b95f74f316} 
+\index{control\_flow\_t@{control\_flow\_t}!on\_success\_next@{on\_success\_next}}
+\index{on\_success\_next@{on\_success\_next}!control\_flow\_t@{control\_flow\_t}}
+\doxysubsubsection{\texorpdfstring{on\_success\_next}{on\_success\_next}}
+{\footnotesize\ttfamily struct control\+\_\+flow\texorpdfstring{$\ast$}{*} control\+\_\+flow\+\_\+t\+::on\+\_\+success\+\_\+next}
+
+
+
+Pointeur vers la prochaine structure de processus en cas d\textquotesingle{}exécution réussie. 
+
+\Hypertarget{structcontrol__flow__t_ad0efad4c99beb666bfc4480b762568aa}\label{structcontrol__flow__t_ad0efad4c99beb666bfc4480b762568aa} 
+\index{control\_flow\_t@{control\_flow\_t}!proc@{proc}}
+\index{proc@{proc}!control\_flow\_t@{control\_flow\_t}}
+\doxysubsubsection{\texorpdfstring{proc}{proc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}}\texorpdfstring{$\ast$}{*} control\+\_\+flow\+\_\+t\+::proc}
+
+
+
+Pointeur vers la structure du processus courant. 
+
+\Hypertarget{structcontrol__flow__t_ae8719818e630ee0563ee4ed068bd0643}\label{structcontrol__flow__t_ae8719818e630ee0563ee4ed068bd0643} 
+\index{control\_flow\_t@{control\_flow\_t}!unconditionnal\_next@{unconditionnal\_next}}
+\index{unconditionnal\_next@{unconditionnal\_next}!control\_flow\_t@{control\_flow\_t}}
+\doxysubsubsection{\texorpdfstring{unconditionnal\_next}{unconditionnal\_next}}
+{\footnotesize\ttfamily struct control\+\_\+flow\texorpdfstring{$\ast$}{*} control\+\_\+flow\+\_\+t\+::unconditionnal\+\_\+next}
+
+
+
+Pointeur vers la prochaine structure de processus en cas d\textquotesingle{}exécution inconditionnelle. 
+
+
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{processus_8h}{processus.\+h}}\end{DoxyCompactItemize}

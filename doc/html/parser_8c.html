@@ -1,0 +1,436 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Minishell PSI 2025: Référence du fichier src/parser.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Minishell PSI 2025
+   </div>
+   <div id="projectbrief">Projet Minishell - UE PSI - Licence 3 Informatique 2025-26</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('parser_8c.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier parser.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implementation of command line parsing.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;ctype.h&gt;</code><br />
+<code>#include &lt;fcntl.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="parser_8h_source.html">parser.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="processus_8h_source.html">processus.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:af3bac5e66a3099ac5a375c6abe1fb2c3" id="r_af3bac5e66a3099ac5a375c6abe1fb2c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8c.html#af3bac5e66a3099ac5a375c6abe1fb2c3">trim</a> (char *str)</td></tr>
+<tr class="memdesc:af3bac5e66a3099ac5a375c6abe1fb2c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de suppression des espaces inutiles au début et à la fin d'une chaîne de caractères.  <br /></td></tr>
+<tr class="separator:af3bac5e66a3099ac5a375c6abe1fb2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a884ea722b2e695936cfa6b0ee00d11c3" id="r_a884ea722b2e695936cfa6b0ee00d11c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8c.html#a884ea722b2e695936cfa6b0ee00d11c3">clean</a> (char *str)</td></tr>
+<tr class="memdesc:a884ea722b2e695936cfa6b0ee00d11c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de nettoyage d'une chaîne de caractères en supprimant les doublons d'espaces.  <br /></td></tr>
+<tr class="separator:a884ea722b2e695936cfa6b0ee00d11c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa642f32e314f6164a0094c312f640f21" id="r_aa642f32e314f6164a0094c312f640f21"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8c.html#aa642f32e314f6164a0094c312f640f21">separate_s</a> (char *str, char *s, size_t max)</td></tr>
+<tr class="memdesc:aa642f32e314f6164a0094c312f640f21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction d'ajout de caractères d'espacement autour de tous les caractères de la chaîne <em>s</em> présents dans <em>str</em>.  <br /></td></tr>
+<tr class="separator:aa642f32e314f6164a0094c312f640f21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ff627a35bb7947298fb5bc342731a57" id="r_a2ff627a35bb7947298fb5bc342731a57"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8c.html#a2ff627a35bb7947298fb5bc342731a57">replace</a> (char *str, const char *s, const char *t, size_t max)</td></tr>
+<tr class="memdesc:a2ff627a35bb7947298fb5bc342731a57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de remplacement de toutes les occurrences de la sous-chaîne <em>s</em> par la sous-chaîne <em>t</em> dans la chaîne <em>str</em>.  <br /></td></tr>
+<tr class="separator:a2ff627a35bb7947298fb5bc342731a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23ba240bddff4480e06168d526be24ea" id="r_a23ba240bddff4480e06168d526be24ea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8c.html#a23ba240bddff4480e06168d526be24ea">substenv</a> (char *str, size_t max)</td></tr>
+<tr class="memdesc:a23ba240bddff4480e06168d526be24ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de substitution des variables d'environnement dans une chaîne de caractères.  <br /></td></tr>
+<tr class="separator:a23ba240bddff4480e06168d526be24ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a248f7947bfc62206b93fa8fa24bc033c" id="r_a248f7947bfc62206b93fa8fa24bc033c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8c.html#a248f7947bfc62206b93fa8fa24bc033c">strcut</a> (char *str, char sep, char **tokens, size_t max)</td></tr>
+<tr class="memdesc:a248f7947bfc62206b93fa8fa24bc033c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de découpage d'une chaîne de caractères en tokens selon un séparateur.  <br /></td></tr>
+<tr class="separator:a248f7947bfc62206b93fa8fa24bc033c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1f113b9a5d497bcc6853c555643c10c" id="r_ac1f113b9a5d497bcc6853c555643c10c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8c.html#ac1f113b9a5d497bcc6853c555643c10c">parse_command_line</a> (<a class="el" href="structcommand__line__t.html">command_line_t</a> *cmdl, const char *line)</td></tr>
+<tr class="memdesc:ac1f113b9a5d497bcc6853c555643c10c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction d'analyse d'une ligne de commande.  <br /></td></tr>
+<tr class="separator:ac1f113b9a5d497bcc6853c555643c10c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Implementation of command line parsing. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Nom1 </dd>
+<dd>
+Nom2 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025-26</dd></dl>
+<p>Implémentation des fonctions d'analyse des lignes de commande. </p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a884ea722b2e695936cfa6b0ee00d11c3" name="a884ea722b2e695936cfa6b0ee00d11c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a884ea722b2e695936cfa6b0ee00d11c3">&#9670;&#160;</a></span>clean()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int clean </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction de nettoyage d'une chaîne de caractères en supprimant les doublons d'espaces. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>Chaîne de caractères à nettoyer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int 0 en cas de succès, -1 en cas d'erreur. </dd></dl>
+
+</div>
+</div>
+<a id="ac1f113b9a5d497bcc6853c555643c10c" name="ac1f113b9a5d497bcc6853c555643c10c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1f113b9a5d497bcc6853c555643c10c">&#9670;&#160;</a></span>parse_command_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int parse_command_line </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcommand__line__t.html">command_line_t</a> *&#160;</td>
+          <td class="paramname"><em>cmdl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction d'analyse d'une ligne de commande. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmdl</td><td>Pointeur vers la structure de ligne de commande à remplir. </td></tr>
+    <tr><td class="paramname">line</td><td>Chaîne de caractères contenant la ligne de commande à analyser. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int 0 en cas de succès, -1 en cas d'erreur (ligne trop longue, trop de commandes, etc.).</dd></dl>
+<p>Cette fonction analyse la ligne de commande <em>line</em> et remplit la structure <em>cmdl</em> avec les informations extraites. La ligne de commande est copiée dans <em>cmdl-&gt;command_line</em> dans la limite de MAX_CMD_LINE caractères. La ligne est ensuite nettoyée (trim, clean, separate_s, replace, substenv), puis découpée en tokens. Les tokens sont ensuite utilisés pour remplir les structures <a class="el" href="structprocessus__t.html" title="Structure représentant un processus.">processus_t</a> et <a class="el" href="structcontrol__flow__t.html" title="Structure de contrôle de flux.">control_flow_t</a> dans <em>cmdl</em>. Si la ligne dépasse la taille maximale ou si le nombre de commandes dépasse MAX_CMDS, la fonction retourne -1. Si une erreur est détectée, les descripteurs de fichiers ouverts sont fermés via close_fds(cmdl) avant de retourner -1. </p>
+
+</div>
+</div>
+<a id="a2ff627a35bb7947298fb5bc342731a57" name="a2ff627a35bb7947298fb5bc342731a57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ff627a35bb7947298fb5bc342731a57">&#9670;&#160;</a></span>replace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int replace </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction de remplacement de toutes les occurrences de la sous-chaîne <em>s</em> par la sous-chaîne <em>t</em> dans la chaîne <em>str</em>. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>Chaîne de caractères à traiter. </td></tr>
+    <tr><td class="paramname">s</td><td>Sous-chaîne à remplacer. </td></tr>
+    <tr><td class="paramname">t</td><td>Sous-chaîne de remplacement. </td></tr>
+    <tr><td class="paramname">max</td><td>Taille maximale de la chaîne <em>str</em>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int 0 en cas de succès, -1 en cas d'erreur (dépassement de taille).</dd></dl>
+<p>Cette fonction remplace toutes les occurrences de la sous-chaîne <em>s</em> par la sous-chaîne <em>t</em> dans la chaîne <em>str</em>. Si le remplacement dépasse la taille maximale <em>max</em>, la fonction retourne -1. </p>
+
+</div>
+</div>
+<a id="aa642f32e314f6164a0094c312f640f21" name="aa642f32e314f6164a0094c312f640f21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa642f32e314f6164a0094c312f640f21">&#9670;&#160;</a></span>separate_s()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int separate_s </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction d'ajout de caractères d'espacement autour de tous les caractères de la chaîne <em>s</em> présents dans <em>str</em>. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>Chaîne de caractères à traiter. </td></tr>
+    <tr><td class="paramname">s</td><td>Chaîne de caractères contenant les séparateurs. </td></tr>
+    <tr><td class="paramname">max</td><td>Taille maximale de la chaîne <em>str</em>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int 0 en cas de succès, -1 en cas d'erreur (dépassement de taille).</dd></dl>
+<p>Cette fonction ajoute un espace avant et après chaque occurrence d'un caractère de <em>s</em> dans <em>str</em>. Si l'ajout d'espaces dépasse la taille maximale <em>max</em>, la fonction retourne -1. </p>
+
+</div>
+</div>
+<a id="a248f7947bfc62206b93fa8fa24bc033c" name="a248f7947bfc62206b93fa8fa24bc033c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a248f7947bfc62206b93fa8fa24bc033c">&#9670;&#160;</a></span>strcut()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int strcut </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>sep</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>tokens</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction de découpage d'une chaîne de caractères en tokens selon un séparateur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>Chaîne de caractères à découper. Attention, cette chaîne est modifiée par la fonction. </td></tr>
+    <tr><td class="paramname">sep</td><td>Caractère séparateur. </td></tr>
+    <tr><td class="paramname">tokens</td><td>Tableau de chaînes de caractères pour stocker les tokens extraits. Le tableau est terminé par un pointeur NULL. </td></tr>
+    <tr><td class="paramname">max</td><td>Taille maximale du tableau <em>tokens</em>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int Nombre de tokens extraits, -1 en cas d'erreur (dépassement de taille).</dd></dl>
+<p>Cette fonction découpe la chaîne <em>str</em> en tokens en utilisant le caractère <em>sep</em> comme séparateur. Les tokens extraits sont stockés dans le tableau <em>tokens</em>. Si le nombre de tokens dépasse la taille maximale <em>max</em>, la fonction retourne -1. </p>
+
+</div>
+</div>
+<a id="a23ba240bddff4480e06168d526be24ea" name="a23ba240bddff4480e06168d526be24ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23ba240bddff4480e06168d526be24ea">&#9670;&#160;</a></span>substenv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int substenv </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction de substitution des variables d'environnement dans une chaîne de caractères. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>Chaîne de caractères à traiter. </td></tr>
+    <tr><td class="paramname">max</td><td>Taille maximale de la chaîne <em>str</em>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int 0 en cas de succès, -1 en cas d'erreur (dépassement de taille).</dd></dl>
+<p>Cette fonction remplace toutes les occurrences de variables d'environnement au format $VAR ou ${VAR} par leur valeur dans la chaîne <em>str</em>. Si une variable n'existe pas, elle est remplacée par une chaîne vide. Si le remplacement dépasse la taille maximale <em>max</em>, la fonction retourne -1. </p>
+
+</div>
+</div>
+<a id="af3bac5e66a3099ac5a375c6abe1fb2c3" name="af3bac5e66a3099ac5a375c6abe1fb2c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3bac5e66a3099ac5a375c6abe1fb2c3">&#9670;&#160;</a></span>trim()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int trim </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction de suppression des espaces inutiles au début et à la fin d'une chaîne de caractères. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>Chaîne de caractères à traiter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int 0 en cas de succès, -1 en cas d'erreur. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="parser_8c.html">parser.c</a></li>
+    <li class="footer">Généré le Jeudi 27 Novembre 2025 08:13:04 pour Minishell PSI 2025 par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

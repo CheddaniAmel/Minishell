@@ -1,0 +1,99 @@
+\doxysection{Référence de la structure command\+\_\+line\+\_\+t}
+\hypertarget{structcommand__line__t}{}\label{structcommand__line__t}\index{command\_line\_t@{command\_line\_t}}
+
+
+Structure représentant une ligne de commande.  
+
+
+
+
+{\ttfamily \#include $<$processus.\+h$>$}
+
+\doxysubsubsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{structcommand__line__t_a0f71c41a7d6735d83de4a427130c6fa6}{command\+\_\+line}} \mbox{[}\mbox{\hyperlink{processus_8h_ac41e0c806b6790a7ef06ed3236889f36}{MAX\+\_\+\+CMD\+\_\+\+LINE}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Ligne de commande complète. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structcommand__line__t_a065d034dc787a44d7b813280ac25c403}{tokens}} \mbox{[}\mbox{\hyperlink{processus_8h_ac41e0c806b6790a7ef06ed3236889f36}{MAX\+\_\+\+CMD\+\_\+\+LINE}}/2+1\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau des tokens extraits de la ligne de commande. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \mbox{\hyperlink{structcommand__line__t_a38c005f26e3a8f48c7c59556d5c66c67}{commands}} \mbox{[}\mbox{\hyperlink{processus_8h_ad14effda14501a769b3d46984d43aa00}{MAX\+\_\+\+CMDS}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau des structures de processus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcontrol__flow__t}{control\+\_\+flow\+\_\+t}} \mbox{\hyperlink{structcommand__line__t_a4cc77bc587ee64b11da2453aea534b7d}{flow}} \mbox{[}\mbox{\hyperlink{processus_8h_ad14effda14501a769b3d46984d43aa00}{MAX\+\_\+\+CMDS}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Structure de contrôle de flux. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{structcommand__line__t_a2474277c5dc6982f74bf0c69478c81de}{num\+\_\+commands}}
+\begin{DoxyCompactList}\small\item\em Nombre de commandes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structcommand__line__t_a68f7625ffb18dcc49faa384b00f58dbc}{opened\+\_\+descriptors}} \mbox{[}\mbox{\hyperlink{processus_8h_ad14effda14501a769b3d46984d43aa00}{MAX\+\_\+\+CMDS}} \texorpdfstring{$\ast$}{*}3+1\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau des descripteurs de fichiers ouverts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Structure représentant une ligne de commande. 
+
+Cette structure contient la ligne de commande complète, un tableau de structures de processus, une structure de contrôle de flux, et un tableau des descripteurs de fichiers ouverts. La structure permet à la fois d\textquotesingle{}allouer l\textquotesingle{}espace mémoire nécessaire pour les processus et de gérer le flux d\textquotesingle{}exécution entre eux. Le schéma suivant illustre la relation entre les structures\+:  
+
+\doxysubsection{Documentation des champs}
+\Hypertarget{structcommand__line__t_a0f71c41a7d6735d83de4a427130c6fa6}\label{structcommand__line__t_a0f71c41a7d6735d83de4a427130c6fa6} 
+\index{command\_line\_t@{command\_line\_t}!command\_line@{command\_line}}
+\index{command\_line@{command\_line}!command\_line\_t@{command\_line\_t}}
+\doxysubsubsection{\texorpdfstring{command\_line}{command\_line}}
+{\footnotesize\ttfamily char command\+\_\+line\+\_\+t\+::command\+\_\+line\mbox{[}\mbox{\hyperlink{processus_8h_ac41e0c806b6790a7ef06ed3236889f36}{MAX\+\_\+\+CMD\+\_\+\+LINE}}\mbox{]}}
+
+
+
+Ligne de commande complète. 
+
+\Hypertarget{structcommand__line__t_a38c005f26e3a8f48c7c59556d5c66c67}\label{structcommand__line__t_a38c005f26e3a8f48c7c59556d5c66c67} 
+\index{command\_line\_t@{command\_line\_t}!commands@{commands}}
+\index{commands@{commands}!command\_line\_t@{command\_line\_t}}
+\doxysubsubsection{\texorpdfstring{commands}{commands}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} command\+\_\+line\+\_\+t\+::commands\mbox{[}\mbox{\hyperlink{processus_8h_ad14effda14501a769b3d46984d43aa00}{MAX\+\_\+\+CMDS}}\mbox{]}}
+
+
+
+Tableau des structures de processus. 
+
+\Hypertarget{structcommand__line__t_a4cc77bc587ee64b11da2453aea534b7d}\label{structcommand__line__t_a4cc77bc587ee64b11da2453aea534b7d} 
+\index{command\_line\_t@{command\_line\_t}!flow@{flow}}
+\index{flow@{flow}!command\_line\_t@{command\_line\_t}}
+\doxysubsubsection{\texorpdfstring{flow}{flow}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcontrol__flow__t}{control\+\_\+flow\+\_\+t}} command\+\_\+line\+\_\+t\+::flow\mbox{[}\mbox{\hyperlink{processus_8h_ad14effda14501a769b3d46984d43aa00}{MAX\+\_\+\+CMDS}}\mbox{]}}
+
+
+
+Structure de contrôle de flux. 
+
+\Hypertarget{structcommand__line__t_a2474277c5dc6982f74bf0c69478c81de}\label{structcommand__line__t_a2474277c5dc6982f74bf0c69478c81de} 
+\index{command\_line\_t@{command\_line\_t}!num\_commands@{num\_commands}}
+\index{num\_commands@{num\_commands}!command\_line\_t@{command\_line\_t}}
+\doxysubsubsection{\texorpdfstring{num\_commands}{num\_commands}}
+{\footnotesize\ttfamily unsigned int command\+\_\+line\+\_\+t\+::num\+\_\+commands}
+
+
+
+Nombre de commandes. 
+
+\Hypertarget{structcommand__line__t_a68f7625ffb18dcc49faa384b00f58dbc}\label{structcommand__line__t_a68f7625ffb18dcc49faa384b00f58dbc} 
+\index{command\_line\_t@{command\_line\_t}!opened\_descriptors@{opened\_descriptors}}
+\index{opened\_descriptors@{opened\_descriptors}!command\_line\_t@{command\_line\_t}}
+\doxysubsubsection{\texorpdfstring{opened\_descriptors}{opened\_descriptors}}
+{\footnotesize\ttfamily int command\+\_\+line\+\_\+t\+::opened\+\_\+descriptors\mbox{[}\mbox{\hyperlink{processus_8h_ad14effda14501a769b3d46984d43aa00}{MAX\+\_\+\+CMDS}} \texorpdfstring{$\ast$}{*}3+1\mbox{]}}
+
+
+
+Tableau des descripteurs de fichiers ouverts. 
+
+\Hypertarget{structcommand__line__t_a065d034dc787a44d7b813280ac25c403}\label{structcommand__line__t_a065d034dc787a44d7b813280ac25c403} 
+\index{command\_line\_t@{command\_line\_t}!tokens@{tokens}}
+\index{tokens@{tokens}!command\_line\_t@{command\_line\_t}}
+\doxysubsubsection{\texorpdfstring{tokens}{tokens}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} command\+\_\+line\+\_\+t\+::tokens\mbox{[}\mbox{\hyperlink{processus_8h_ac41e0c806b6790a7ef06ed3236889f36}{MAX\+\_\+\+CMD\+\_\+\+LINE}}/2+1\mbox{]}}
+
+
+
+Tableau des tokens extraits de la ligne de commande. 
+
+
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{processus_8h}{processus.\+h}}\end{DoxyCompactItemize}

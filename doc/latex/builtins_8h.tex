@@ -1,0 +1,178 @@
+\doxysection{Référence du fichier include/builtins.h}
+\hypertarget{builtins_8h}{}\label{builtins_8h}\index{include/builtins.h@{include/builtins.h}}
+
+
+Header file for built-\/in commands.  
+
+
+{\ttfamily \#include "{}processus.\+h"{}}\newline
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{builtins_8h_a033df7b763832af4bfe072cc785a8a5e}{is\+\_\+builtin}} (const \mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}cmd)
+\begin{DoxyCompactList}\small\item\em Fonction de vérification si une commande est une commande "{}built-\/in"{}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{builtins_8h_a765434e78cfbdefd9e641554d9a47e7b}{exec\+\_\+builtin}} (\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}cmd)
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}exécution d\textquotesingle{}une commande intégrée. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{builtins_8h_a8972288aed87d673a45339a32046bc99}{builtin\+\_\+cd}} (\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}cmd)
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}exécution de la commande "{}cd"{}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{builtins_8h_a0d1dfc87ce956538fa18f5381c15bcd5}{builtin\+\_\+exit}} (\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}cmd)
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}exécution de la commande "{}exit"{}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{builtins_8h_a4e7cb9bd42ff109c326f1d10cb21d3f0}{builtin\+\_\+export}} (\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}cmd)
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}exécution de la commande "{}export"{}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{builtins_8h_a4e0d1aee06df605eaaa31bafc481acfe}{builtin\+\_\+unset}} (\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}cmd)
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}exécution de la commande "{}unset"{}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{builtins_8h_ae289ac1732d7dd9ac59ab7e12ad53018}{builtin\+\_\+pwd}} (\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}cmd)
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}exécution de la commande "{}pwd"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Header file for built-\/in commands. 
+
+\begin{DoxyAuthor}{Auteur}
+Nom1 
+
+Nom2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/26
+\end{DoxyDate}
+Définitions des fonctions des commandes intégrées. 
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{builtins_8h_a8972288aed87d673a45339a32046bc99}\label{builtins_8h_a8972288aed87d673a45339a32046bc99} 
+\index{builtins.h@{builtins.h}!builtin\_cd@{builtin\_cd}}
+\index{builtin\_cd@{builtin\_cd}!builtins.h@{builtins.h}}
+\doxysubsubsection{\texorpdfstring{builtin\_cd()}{builtin\_cd()}}
+{\footnotesize\ttfamily int builtin\+\_\+cd (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Fonction d\textquotesingle{}exécution de la commande "{}cd"{}. 
+
+Fonctions spécifiques aux commandes intégrées. 
+\begin{DoxyParams}{Paramètres}
+{\em cmd} & Pointeur vers la structure de commande à exécuter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur.
+\end{DoxyReturn}
+Déplace le CWD du processus vers le répertoire spécifié dans le premier argument de la commande. Si aucun argument n\textquotesingle{}est fourni, le CWD est déplacé vers le répertoire HOME de l\textquotesingle{}utilisateur. En cas d\textquotesingle{}erreur (répertoire inexistant, permission refusée, etc.), un message d\textquotesingle{}erreur est affiché sur {\itshape cmd-\/\texorpdfstring{$>$}{>}stderr} et la fonction retourne un code d\textquotesingle{}erreur. \Hypertarget{builtins_8h_a0d1dfc87ce956538fa18f5381c15bcd5}\label{builtins_8h_a0d1dfc87ce956538fa18f5381c15bcd5} 
+\index{builtins.h@{builtins.h}!builtin\_exit@{builtin\_exit}}
+\index{builtin\_exit@{builtin\_exit}!builtins.h@{builtins.h}}
+\doxysubsubsection{\texorpdfstring{builtin\_exit()}{builtin\_exit()}}
+{\footnotesize\ttfamily int builtin\+\_\+exit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Fonction d\textquotesingle{}exécution de la commande "{}exit"{}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cmd} & Pointeur vers la structure de commande à exécuter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur.
+\end{DoxyReturn}
+Termine le shell avec le code de sortie spécifié dans le premier argument de la commande. Si aucun argument n\textquotesingle{}est fourni, le shell se termine avec le code de sortie 0. En cas d\textquotesingle{}erreur (argument non numérique, etc.), un message d\textquotesingle{}erreur est affiché sur {\itshape cmd-\/\texorpdfstring{$>$}{>}stderr} et la fonction retourne un code d\textquotesingle{}erreur \Hypertarget{builtins_8h_a4e7cb9bd42ff109c326f1d10cb21d3f0}\label{builtins_8h_a4e7cb9bd42ff109c326f1d10cb21d3f0} 
+\index{builtins.h@{builtins.h}!builtin\_export@{builtin\_export}}
+\index{builtin\_export@{builtin\_export}!builtins.h@{builtins.h}}
+\doxysubsubsection{\texorpdfstring{builtin\_export()}{builtin\_export()}}
+{\footnotesize\ttfamily int builtin\+\_\+export (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Fonction d\textquotesingle{}exécution de la commande "{}export"{}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cmd} & Pointeur vers la structure de commande à exécuter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur.
+\end{DoxyReturn}
+Ajoute ou modifie une variable d\textquotesingle{}environnement dans l\textquotesingle{}environnement du shell. En cas d\textquotesingle{}erreur (format invalide, etc.), un message d\textquotesingle{}erreur est affiché sur {\itshape cmd-\/\texorpdfstring{$>$}{>}stderr} et la fonction retourne un code d\textquotesingle{}erreur. \Hypertarget{builtins_8h_ae289ac1732d7dd9ac59ab7e12ad53018}\label{builtins_8h_ae289ac1732d7dd9ac59ab7e12ad53018} 
+\index{builtins.h@{builtins.h}!builtin\_pwd@{builtin\_pwd}}
+\index{builtin\_pwd@{builtin\_pwd}!builtins.h@{builtins.h}}
+\doxysubsubsection{\texorpdfstring{builtin\_pwd()}{builtin\_pwd()}}
+{\footnotesize\ttfamily int builtin\+\_\+pwd (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Fonction d\textquotesingle{}exécution de la commande "{}pwd"{}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cmd} & Pointeur vers la structure de commande à exécuter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur.
+\end{DoxyReturn}
+Affiche le répertoire de travail actuel (CWD) du processus sur la sortie standard {\itshape cmd-\/\texorpdfstring{$>$}{>}stdout}. En cas d\textquotesingle{}erreur, un message d\textquotesingle{}erreur est affiché sur {\itshape cmd-\/\texorpdfstring{$>$}{>}stderr} et la fonction retourne un code d\textquotesingle{}erreur. \Hypertarget{builtins_8h_a4e0d1aee06df605eaaa31bafc481acfe}\label{builtins_8h_a4e0d1aee06df605eaaa31bafc481acfe} 
+\index{builtins.h@{builtins.h}!builtin\_unset@{builtin\_unset}}
+\index{builtin\_unset@{builtin\_unset}!builtins.h@{builtins.h}}
+\doxysubsubsection{\texorpdfstring{builtin\_unset()}{builtin\_unset()}}
+{\footnotesize\ttfamily int builtin\+\_\+unset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Fonction d\textquotesingle{}exécution de la commande "{}unset"{}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cmd} & Pointeur vers la structure de commande à exécuter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur.
+\end{DoxyReturn}
+Supprime une variable d\textquotesingle{}environnement de l\textquotesingle{}environnement du shell. En cas d\textquotesingle{}erreur (variable inexistante, etc.), un message d\textquotesingle{}erreur est affiché sur {\itshape cmd-\/\texorpdfstring{$>$}{>}stderr} et la fonction retourne un code d\textquotesingle{}erreur. \Hypertarget{builtins_8h_a765434e78cfbdefd9e641554d9a47e7b}\label{builtins_8h_a765434e78cfbdefd9e641554d9a47e7b} 
+\index{builtins.h@{builtins.h}!exec\_builtin@{exec\_builtin}}
+\index{exec\_builtin@{exec\_builtin}!builtins.h@{builtins.h}}
+\doxysubsubsection{\texorpdfstring{exec\_builtin()}{exec\_builtin()}}
+{\footnotesize\ttfamily int exec\+\_\+builtin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Fonction d\textquotesingle{}exécution d\textquotesingle{}une commande intégrée. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cmd} & Pointeur vers la structure de commande à exécuter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur. 
+\end{DoxyReturn}
+\Hypertarget{builtins_8h_a033df7b763832af4bfe072cc785a8a5e}\label{builtins_8h_a033df7b763832af4bfe072cc785a8a5e} 
+\index{builtins.h@{builtins.h}!is\_builtin@{is\_builtin}}
+\index{is\_builtin@{is\_builtin}!builtins.h@{builtins.h}}
+\doxysubsubsection{\texorpdfstring{is\_builtin()}{is\_builtin()}}
+{\footnotesize\ttfamily int is\+\_\+builtin (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structprocessus__t}{processus\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Fonction de vérification si une commande est une commande "{}built-\/in"{}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cmd} & Structure de commande à vérifier. (Le champ {\itshape path} est utilisé pour vérifier le nom de la commande.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 1 si la commande est intégrée, 0 sinon.
+\end{DoxyReturn}
+Les commandes intégrées sont a minima\+: cd, exit, export, unset, pwd.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cmd} & Nom de la commande à vérifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 1 si la commande est intégrée, 0 sinon.
+\end{DoxyReturn}
+Les commandes intégrées sont a minima\+: cd, exit, export, unset, pwd. 

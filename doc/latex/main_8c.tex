@@ -1,0 +1,76 @@
+\doxysection{Référence du fichier src/main.c}
+\hypertarget{main_8c}{}\label{main_8c}\index{src/main.c@{src/main.c}}
+
+
+Programme principal du shell.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$termios.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include "{}parser.\+h"{}}\newline
+{\ttfamily \#include "{}processus.\+h"{}}\newline
+{\ttfamily \#include "{}builtins.\+h"{}}\newline
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_aa7e4fe1d0c843e02dfdba34edc69fe91}{prompt}} ()
+\begin{DoxyCompactList}\small\item\em Affiche le prompt du shell. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Fonction principale du shell. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Programme principal du shell. 
+
+\begin{DoxyAuthor}{Auteur}
+Nom1 
+
+Nom2 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/26
+\end{DoxyDate}
+Ce fichier contient la fonction main de l\textquotesingle{}exécutable. Elle gère la boucle principale du shell, incluant l\textquotesingle{}affichage du prompt, la lecture de la ligne de commande, le parsing et l\textquotesingle{}exécution. 
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8c_a0ddf1224851353fc92bfbff6f499fa97} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Fonction principale du shell. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em argc} & Nombre d\textquotesingle{}arguments (non utilisé). \\
+\hline
+{\em argv} & Tableau des arguments (non utilisé). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int Code de retour du programme. Ce code pourrait être le code de retour du dernier processus exécuté (optionnel).
+\end{DoxyReturn}
+Cette fonction gère la boucle principale du shell\+:
+\begin{DoxyItemize}
+\item Affiche le prompt
+\item Lit la ligne de commande
+\item Parse la ligne de commande
+\item Exécute les commandes En cas d\textquotesingle{}erreur lors de l\textquotesingle{}exécution, un message est affiché sur stderr et la boucle continue. Le shell se termine proprement en cas d\textquotesingle{}EOF (Ctrl+D) ou d\textquotesingle{}erreur fatale. 
+\end{DoxyItemize}\Hypertarget{main_8c_aa7e4fe1d0c843e02dfdba34edc69fe91}\label{main_8c_aa7e4fe1d0c843e02dfdba34edc69fe91} 
+\index{main.c@{main.c}!prompt@{prompt}}
+\index{prompt@{prompt}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{prompt()}{prompt()}}
+{\footnotesize\ttfamily void prompt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Affiche le prompt du shell. 
+
+Affiche le prompt "{}\$ "{} et force l\textquotesingle{}affichage immédiat avec fflush. Cette fonction peut être modifiée pour afficher des informations supplémentaires (CWD, utilisateur, etc.). 

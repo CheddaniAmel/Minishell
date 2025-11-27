@@ -1,0 +1,183 @@
+\doxysection{Référence de la structure processus\+\_\+t}
+\hypertarget{structprocessus__t}{}\label{structprocessus__t}\index{processus\_t@{processus\_t}}
+
+
+Structure représentant un processus.  
+
+
+
+
+{\ttfamily \#include $<$processus.\+h$>$}
+
+\doxysubsubsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+pid\+\_\+t \mbox{\hyperlink{structprocessus__t_abcb99e1ffd763f1e6d8c6d77621a0b01}{pid}}
+\begin{DoxyCompactList}\small\item\em Process ID. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structprocessus__t_a1ca6181885dfc17115e258999c0442ea}{argv}} \mbox{[}\mbox{\hyperlink{processus_8h_a29b7451465deac204c5f7cb1f9c6e1fc}{MAX\+\_\+\+ARGS}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Liste des arguments. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structprocessus__t_aff87011939b03a713e093f1b316e3400}{envp}} \mbox{[}\mbox{\hyperlink{processus_8h_a736a128764c23ee234d2c6118401ef71}{MAX\+\_\+\+ENV}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Variables d\textquotesingle{}environnement. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structprocessus__t_afa345f3169172df13488f7ba55a6a841}{path}}
+\begin{DoxyCompactList}\small\item\em Chemin de l\textquotesingle{}exécutable. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structprocessus__t_af1e6b774fa35966e40872263440e5341}{stdin\+\_\+fd}}
+\begin{DoxyCompactList}\small\item\em Descripteur d\textquotesingle{}entrée standard. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structprocessus__t_ab14bb37398cab87c068a6ea6b5dd437a}{stdout\+\_\+fd}}
+\begin{DoxyCompactList}\small\item\em Descripteur de sortie standard. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structprocessus__t_ad6f785d0a6c89ac3062089106eb61db7}{stderr\+\_\+fd}}
+\begin{DoxyCompactList}\small\item\em Descripteur d\textquotesingle{}erreur standard. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structprocessus__t_a7c675ff8461d26def4b729ace411edfb}{status}}
+\begin{DoxyCompactList}\small\item\em Statut de sortie. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structprocessus__t_ab810ac5c6799460f71a65369d091ca43}{is\+\_\+background}}
+\begin{DoxyCompactList}\small\item\em Background flag. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structprocessus__t_a2c88f013d10908b08c0faacc176330a4}{invert}}
+\begin{DoxyCompactList}\small\item\em Inversion du code de retour pour le contrôle de flux. \end{DoxyCompactList}\item 
+struct timespec \mbox{\hyperlink{structprocessus__t_a02bb45b725a936e92f5c769423b94037}{start\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Start time. \end{DoxyCompactList}\item 
+struct timespec \mbox{\hyperlink{structprocessus__t_a71d333e053a05fc6a9f278b7054f2c41}{end\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em End time. \end{DoxyCompactList}\item 
+struct control\+\_\+flow \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structprocessus__t_a77211fce5deeaf7724cd40858d7ea9a0}{cf}}
+\begin{DoxyCompactList}\small\item\em Pointeur vers la structure de contrôle de flux associée. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Structure représentant un processus. 
+
+Cette structure contient des informations sur un processus\+: PID, arguments, variables d\textquotesingle{}environnement, descripteurs des IO standards, le statut de sortie, un "{}flag"{} d\textquotesingle{}exécution en arrière-\/plan, et les temps de démarrage/arrêt. 
+
+\doxysubsection{Documentation des champs}
+\Hypertarget{structprocessus__t_a1ca6181885dfc17115e258999c0442ea}\label{structprocessus__t_a1ca6181885dfc17115e258999c0442ea} 
+\index{processus\_t@{processus\_t}!argv@{argv}}
+\index{argv@{argv}!processus\_t@{processus\_t}}
+\doxysubsubsection{\texorpdfstring{argv}{argv}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} processus\+\_\+t\+::argv\mbox{[}\mbox{\hyperlink{processus_8h_a29b7451465deac204c5f7cb1f9c6e1fc}{MAX\+\_\+\+ARGS}}\mbox{]}}
+
+
+
+Liste des arguments. 
+
+\Hypertarget{structprocessus__t_a77211fce5deeaf7724cd40858d7ea9a0}\label{structprocessus__t_a77211fce5deeaf7724cd40858d7ea9a0} 
+\index{processus\_t@{processus\_t}!cf@{cf}}
+\index{cf@{cf}!processus\_t@{processus\_t}}
+\doxysubsubsection{\texorpdfstring{cf}{cf}}
+{\footnotesize\ttfamily struct control\+\_\+flow\texorpdfstring{$\ast$}{*} processus\+\_\+t\+::cf}
+
+
+
+Pointeur vers la structure de contrôle de flux associée. 
+
+\Hypertarget{structprocessus__t_a71d333e053a05fc6a9f278b7054f2c41}\label{structprocessus__t_a71d333e053a05fc6a9f278b7054f2c41} 
+\index{processus\_t@{processus\_t}!end\_time@{end\_time}}
+\index{end\_time@{end\_time}!processus\_t@{processus\_t}}
+\doxysubsubsection{\texorpdfstring{end\_time}{end\_time}}
+{\footnotesize\ttfamily struct timespec processus\+\_\+t\+::end\+\_\+time}
+
+
+
+End time. 
+
+\Hypertarget{structprocessus__t_aff87011939b03a713e093f1b316e3400}\label{structprocessus__t_aff87011939b03a713e093f1b316e3400} 
+\index{processus\_t@{processus\_t}!envp@{envp}}
+\index{envp@{envp}!processus\_t@{processus\_t}}
+\doxysubsubsection{\texorpdfstring{envp}{envp}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} processus\+\_\+t\+::envp\mbox{[}\mbox{\hyperlink{processus_8h_a736a128764c23ee234d2c6118401ef71}{MAX\+\_\+\+ENV}}\mbox{]}}
+
+
+
+Variables d\textquotesingle{}environnement. 
+
+\Hypertarget{structprocessus__t_a2c88f013d10908b08c0faacc176330a4}\label{structprocessus__t_a2c88f013d10908b08c0faacc176330a4} 
+\index{processus\_t@{processus\_t}!invert@{invert}}
+\index{invert@{invert}!processus\_t@{processus\_t}}
+\doxysubsubsection{\texorpdfstring{invert}{invert}}
+{\footnotesize\ttfamily uint8\+\_\+t processus\+\_\+t\+::invert}
+
+
+
+Inversion du code de retour pour le contrôle de flux. 
+
+\Hypertarget{structprocessus__t_ab810ac5c6799460f71a65369d091ca43}\label{structprocessus__t_ab810ac5c6799460f71a65369d091ca43} 
+\index{processus\_t@{processus\_t}!is\_background@{is\_background}}
+\index{is\_background@{is\_background}!processus\_t@{processus\_t}}
+\doxysubsubsection{\texorpdfstring{is\_background}{is\_background}}
+{\footnotesize\ttfamily uint8\+\_\+t processus\+\_\+t\+::is\+\_\+background}
+
+
+
+Background flag. 
+
+\Hypertarget{structprocessus__t_afa345f3169172df13488f7ba55a6a841}\label{structprocessus__t_afa345f3169172df13488f7ba55a6a841} 
+\index{processus\_t@{processus\_t}!path@{path}}
+\index{path@{path}!processus\_t@{processus\_t}}
+\doxysubsubsection{\texorpdfstring{path}{path}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} processus\+\_\+t\+::path}
+
+
+
+Chemin de l\textquotesingle{}exécutable. 
+
+\Hypertarget{structprocessus__t_abcb99e1ffd763f1e6d8c6d77621a0b01}\label{structprocessus__t_abcb99e1ffd763f1e6d8c6d77621a0b01} 
+\index{processus\_t@{processus\_t}!pid@{pid}}
+\index{pid@{pid}!processus\_t@{processus\_t}}
+\doxysubsubsection{\texorpdfstring{pid}{pid}}
+{\footnotesize\ttfamily pid\+\_\+t processus\+\_\+t\+::pid}
+
+
+
+Process ID. 
+
+\Hypertarget{structprocessus__t_a02bb45b725a936e92f5c769423b94037}\label{structprocessus__t_a02bb45b725a936e92f5c769423b94037} 
+\index{processus\_t@{processus\_t}!start\_time@{start\_time}}
+\index{start\_time@{start\_time}!processus\_t@{processus\_t}}
+\doxysubsubsection{\texorpdfstring{start\_time}{start\_time}}
+{\footnotesize\ttfamily struct timespec processus\+\_\+t\+::start\+\_\+time}
+
+
+
+Start time. 
+
+\Hypertarget{structprocessus__t_a7c675ff8461d26def4b729ace411edfb}\label{structprocessus__t_a7c675ff8461d26def4b729ace411edfb} 
+\index{processus\_t@{processus\_t}!status@{status}}
+\index{status@{status}!processus\_t@{processus\_t}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily int processus\+\_\+t\+::status}
+
+
+
+Statut de sortie. 
+
+\Hypertarget{structprocessus__t_ad6f785d0a6c89ac3062089106eb61db7}\label{structprocessus__t_ad6f785d0a6c89ac3062089106eb61db7} 
+\index{processus\_t@{processus\_t}!stderr\_fd@{stderr\_fd}}
+\index{stderr\_fd@{stderr\_fd}!processus\_t@{processus\_t}}
+\doxysubsubsection{\texorpdfstring{stderr\_fd}{stderr\_fd}}
+{\footnotesize\ttfamily int processus\+\_\+t\+::stderr\+\_\+fd}
+
+
+
+Descripteur d\textquotesingle{}erreur standard. 
+
+\Hypertarget{structprocessus__t_af1e6b774fa35966e40872263440e5341}\label{structprocessus__t_af1e6b774fa35966e40872263440e5341} 
+\index{processus\_t@{processus\_t}!stdin\_fd@{stdin\_fd}}
+\index{stdin\_fd@{stdin\_fd}!processus\_t@{processus\_t}}
+\doxysubsubsection{\texorpdfstring{stdin\_fd}{stdin\_fd}}
+{\footnotesize\ttfamily int processus\+\_\+t\+::stdin\+\_\+fd}
+
+
+
+Descripteur d\textquotesingle{}entrée standard. 
+
+\Hypertarget{structprocessus__t_ab14bb37398cab87c068a6ea6b5dd437a}\label{structprocessus__t_ab14bb37398cab87c068a6ea6b5dd437a} 
+\index{processus\_t@{processus\_t}!stdout\_fd@{stdout\_fd}}
+\index{stdout\_fd@{stdout\_fd}!processus\_t@{processus\_t}}
+\doxysubsubsection{\texorpdfstring{stdout\_fd}{stdout\_fd}}
+{\footnotesize\ttfamily int processus\+\_\+t\+::stdout\+\_\+fd}
+
+
+
+Descripteur de sortie standard. 
+
+
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{processus_8h}{processus.\+h}}\end{DoxyCompactItemize}

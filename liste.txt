@@ -1,0 +1,17 @@
+total 108
+drwxr-xr-x 6 kali kali  4096 Nov 27 05:05 .
+drwxrwxr-x 4 kali kali  4096 Nov 25 06:20 ..
+-rwxr-xr-x 1 kali kali   212 Oct 15 11:42 ._build
+drwxr-xr-x 2 kali kali  4096 Nov 27 05:04 build
+-rwxr-xr-x 1 kali kali   212 Oct 15 11:42 ._doc
+drwxr-xr-x 3 kali kali  4096 Nov 23 10:52 doc
+-rw-r--r-- 1 kali kali     6 Nov 27 05:05 fichier.txt
+-rw-r--r-- 1 kali kali     7 Nov 25 18:36 fichire.txt
+-rwxr-xr-x 1 kali kali   212 Oct 15 11:42 ._include
+drwxr-xr-x 2 kali kali  4096 Nov 23 10:52 include
+-rw-r--r-- 1 kali kali     0 Nov 27 05:05 liste.txt
+-rw-r--r-- 1 kali kali   212 Oct 15 11:42 ._Makefile
+-rw-r--r-- 1 kali kali  1271 Oct 15 11:42 Makefile
+-rwxrwxr-x 1 kali kali 51096 Nov 27 05:04 minishell
+-rwxr-xr-x 1 kali kali   212 Oct 15 11:42 ._src
+drwxr-xr-x 2 kali kali  4096 Nov 27 05:03 src

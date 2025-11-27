@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Minishell PSI 2025:  Fichier source de include/processus.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Minishell PSI 2025
+   </div>
+   <div id="projectbrief">Projet Minishell - UE PSI - Licence 3 Informatique 2025-26</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('processus_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">processus.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="processus_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifndef PROCESSUS_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define PROCESSUS_H</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="processus_8h.html#a29b7451465deac204c5f7cb1f9c6e1fc">   19</a></span><span class="preprocessor">#define MAX_ARGS 128</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="processus_8h.html#a736a128764c23ee234d2c6118401ef71">   21</a></span><span class="preprocessor">#define MAX_ENV 128</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="processus_8h.html#ad14effda14501a769b3d46984d43aa00">   23</a></span><span class="preprocessor">#define MAX_CMDS 128</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="processus_8h.html#ac41e0c806b6790a7ef06ed3236889f36">   25</a></span><span class="preprocessor">#define MAX_CMD_LINE 4096</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="processus_8h.html#a98cbfef0df69b9f91082949f5e1848f6">   31</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="processus_8h.html#a98cbfef0df69b9f91082949f5e1848f6a6d1e669a2a1ebcb8abb0a2dc22447359">   32</a></span>    <a class="code hl_enumvalue" href="processus_8h.html#a98cbfef0df69b9f91082949f5e1848f6a6d1e669a2a1ebcb8abb0a2dc22447359">UNCONDITIONAL</a>, </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="processus_8h.html#a98cbfef0df69b9f91082949f5e1848f6a04cf1408595a580d289bdaac55834ad6">   33</a></span>    <a class="code hl_enumvalue" href="processus_8h.html#a98cbfef0df69b9f91082949f5e1848f6a04cf1408595a580d289bdaac55834ad6">ON_SUCCESS</a>,    </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_enumvalue" href="processus_8h.html#a98cbfef0df69b9f91082949f5e1848f6afcff8971afca3980ca5bdafa93e531d0">ON_FAILURE</a>     </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="processus_8h.html#a98cbfef0df69b9f91082949f5e1848f6afcff8971afca3980ca5bdafa93e531d0">   35</a></span>} <a class="code hl_enumeration" href="processus_8h.html#a98cbfef0df69b9f91082949f5e1848f6">control_flow_mode_t</a>;</div>
+</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">struct </span>control_flow; <span class="comment">// Déclaration anticipée pour l&#39;utilisation dans processus_t</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">struct </span>command_line; <span class="comment">// Déclaration anticipée pour l&#39;utilisation dans control_flow_t</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="};">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structprocessus__t.html">   45</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structprocessus__t.html#abcb99e1ffd763f1e6d8c6d77621a0b01">   46</a></span>    pid_t <a class="code hl_variable" href="structprocessus__t.html#abcb99e1ffd763f1e6d8c6d77621a0b01">pid</a>;                  </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="structprocessus__t.html#a1ca6181885dfc17115e258999c0442ea">   47</a></span>    <span class="keywordtype">char</span>* argv[<a class="code hl_define" href="processus_8h.html#a29b7451465deac204c5f7cb1f9c6e1fc">MAX_ARGS</a>];       </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="structprocessus__t.html#aff87011939b03a713e093f1b316e3400">   48</a></span>    <span class="keywordtype">char</span>* envp[<a class="code hl_define" href="processus_8h.html#a736a128764c23ee234d2c6118401ef71">MAX_ENV</a>];        </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="structprocessus__t.html#afa345f3169172df13488f7ba55a6a841">   49</a></span>    <span class="keywordtype">char</span>* <a class="code hl_variable" href="structprocessus__t.html#afa345f3169172df13488f7ba55a6a841">path</a>;                 </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structprocessus__t.html#af1e6b774fa35966e40872263440e5341">   51</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structprocessus__t.html#af1e6b774fa35966e40872263440e5341">stdin_fd</a>;               </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structprocessus__t.html#ab14bb37398cab87c068a6ea6b5dd437a">   52</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structprocessus__t.html#ab14bb37398cab87c068a6ea6b5dd437a">stdout_fd</a>;              </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="structprocessus__t.html#ad6f785d0a6c89ac3062089106eb61db7">   53</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structprocessus__t.html#ad6f785d0a6c89ac3062089106eb61db7">stderr_fd</a>;              </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structprocessus__t.html#a7c675ff8461d26def4b729ace411edfb">   54</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structprocessus__t.html#a7c675ff8461d26def4b729ace411edfb">status</a>;                 </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="structprocessus__t.html#ab810ac5c6799460f71a65369d091ca43">   55</a></span>    uint8_t <a class="code hl_variable" href="structprocessus__t.html#ab810ac5c6799460f71a65369d091ca43">is_background</a>;      </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="structprocessus__t.html#a2c88f013d10908b08c0faacc176330a4">   56</a></span>    uint8_t <a class="code hl_variable" href="structprocessus__t.html#a2c88f013d10908b08c0faacc176330a4">invert</a>;             </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="structprocessus__t.html#a02bb45b725a936e92f5c769423b94037">   57</a></span>    <span class="keyword">struct </span>timespec start_time; </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="structprocessus__t.html#a71d333e053a05fc6a9f278b7054f2c41">   58</a></span>    <span class="keyword">struct </span>timespec end_time;   </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="structprocessus__t.html#a77211fce5deeaf7724cd40858d7ea9a0">   59</a></span>    <span class="keyword">struct </span>control_flow* <a class="code hl_variable" href="structprocessus__t.html#a77211fce5deeaf7724cd40858d7ea9a0">cf</a>;    </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>} <a class="code hl_struct" href="structprocessus__t.html">processus_t</a>;</div>
+</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="};">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="structcontrol__flow__t.html">   66</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>control_flow {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="structcontrol__flow__t.html#ad0efad4c99beb666bfc4480b762568aa">   67</a></span>    <a class="code hl_struct" href="structprocessus__t.html">processus_t</a>* <a class="code hl_variable" href="structcontrol__flow__t.html#ad0efad4c99beb666bfc4480b762568aa">proc</a>;                     </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="structcontrol__flow__t.html#ae8719818e630ee0563ee4ed068bd0643">   68</a></span>    <span class="keyword">struct </span>control_flow* <a class="code hl_variable" href="structcontrol__flow__t.html#ae8719818e630ee0563ee4ed068bd0643">unconditionnal_next</a>; </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="structcontrol__flow__t.html#aa9daf3077776be206f5596b95f74f316">   69</a></span>    <span class="keyword">struct </span>control_flow* <a class="code hl_variable" href="structcontrol__flow__t.html#aa9daf3077776be206f5596b95f74f316">on_success_next</a>;     </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="structcontrol__flow__t.html#a8fa7c532ad427f96bacb4d68980d3f9a">   70</a></span>    <span class="keyword">struct </span>control_flow* <a class="code hl_variable" href="structcontrol__flow__t.html#a8fa7c532ad427f96bacb4d68980d3f9a">on_failure_next</a>;     </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="structcontrol__flow__t.html#a56c3e362b79013c628d0e370d69356c9">   71</a></span>    <span class="keyword">struct </span>command_line* <a class="code hl_variable" href="structcontrol__flow__t.html#a56c3e362b79013c628d0e370d69356c9">cmdl</a>;                     </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>} <a class="code hl_struct" href="structcontrol__flow__t.html">control_flow_t</a>;</div>
+</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="foldopen" id="foldopen00082" data-start="{" data-end="};">
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="structcommand__line__t.html">   82</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>command_line {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="structcommand__line__t.html#a0f71c41a7d6735d83de4a427130c6fa6">   83</a></span>    <span class="keywordtype">char</span> command_line[<a class="code hl_define" href="processus_8h.html#ac41e0c806b6790a7ef06ed3236889f36">MAX_CMD_LINE</a>];  </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="structcommand__line__t.html#a065d034dc787a44d7b813280ac25c403">   84</a></span>    <span class="keywordtype">char</span>* tokens[<a class="code hl_define" href="processus_8h.html#ac41e0c806b6790a7ef06ed3236889f36">MAX_CMD_LINE</a> / 2 + 1]; </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="structcommand__line__t.html#a38c005f26e3a8f48c7c59556d5c66c67">   85</a></span>    <a class="code hl_struct" href="structprocessus__t.html">processus_t</a> commands[<a class="code hl_define" href="processus_8h.html#ad14effda14501a769b3d46984d43aa00">MAX_CMDS</a>];   </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="structcommand__line__t.html#a4cc77bc587ee64b11da2453aea534b7d">   86</a></span>    <a class="code hl_struct" href="structcontrol__flow__t.html">control_flow_t</a> flow[<a class="code hl_define" href="processus_8h.html#ad14effda14501a769b3d46984d43aa00">MAX_CMDS</a>];    </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="structcommand__line__t.html#a2474277c5dc6982f74bf0c69478c81de">   87</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structcommand__line__t.html#a2474277c5dc6982f74bf0c69478c81de">num_commands</a>;        </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="structcommand__line__t.html#a68f7625ffb18dcc49faa384b00f58dbc">   88</a></span>    <span class="keywordtype">int</span> opened_descriptors[<a class="code hl_define" href="processus_8h.html#ad14effda14501a769b3d46984d43aa00">MAX_CMDS</a> * 3 + 1]; </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>} <a class="code hl_struct" href="structcommand__line__t.html">command_line_t</a>;</div>
+</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keywordtype">int</span> <a class="code hl_function" href="processus_8h.html#a9de855396463362feef85246c5055741">init_processus</a>(<a class="code hl_struct" href="structprocessus__t.html">processus_t</a>* proc);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="keywordtype">int</span> <a class="code hl_function" href="processus_8h.html#af64b28bf32de91947039dd43e6b34d22">launch_processus</a>(<a class="code hl_struct" href="structprocessus__t.html">processus_t</a>* proc);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="keywordtype">int</span> <a class="code hl_function" href="processus_8h.html#aa7be566c887f63f8962473eb35662e5a">init_control_flow</a>(<a class="code hl_struct" href="structcontrol__flow__t.html">control_flow_t</a>* cf);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><a class="code hl_struct" href="structprocessus__t.html">processus_t</a>* <a class="code hl_function" href="processus_8h.html#a94c765782922d36e51dff3b405599440">add_processus</a>(<a class="code hl_struct" href="structcommand__line__t.html">command_line_t</a>* cmdl, <a class="code hl_enumeration" href="processus_8h.html#a98cbfef0df69b9f91082949f5e1848f6">control_flow_mode_t</a> mode);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><a class="code hl_struct" href="structprocessus__t.html">processus_t</a>* <a class="code hl_function" href="processus_8h.html#aa9f56dfdaa4b7d5ae27ae25cf7759d40">next_processus</a>(<a class="code hl_struct" href="structcommand__line__t.html">command_line_t</a>* cmdl);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="keywordtype">int</span> <a class="code hl_function" href="processus_8h.html#acaa3a2e3b33a07ab1d32fb5d2ac6dbc2">add_fd</a>(<a class="code hl_struct" href="structcommand__line__t.html">command_line_t</a>* cmdl, <span class="keywordtype">int</span> fd);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="keywordtype">int</span> <a class="code hl_function" href="processus_8h.html#ad9a75221e5e6ddb62b4e9cdc1a9f09ba">close_fds</a>(<a class="code hl_struct" href="structcommand__line__t.html">command_line_t</a>* cmdl);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="keywordtype">int</span> <a class="code hl_function" href="processus_8h.html#abdbe7e802143b3e4122d652acbc74b7d">init_command_line</a>(<a class="code hl_struct" href="structcommand__line__t.html">command_line_t</a>* cmdl);</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="keywordtype">int</span> <a class="code hl_function" href="processus_8h.html#a33203f5945de8fa472f72622d222926b">launch_command_line</a>(<a class="code hl_struct" href="structcommand__line__t.html">command_line_t</a>* cmdl);</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aprocessus_8h_html_a29b7451465deac204c5f7cb1f9c6e1fc"><div class="ttname"><a href="processus_8h.html#a29b7451465deac204c5f7cb1f9c6e1fc">MAX_ARGS</a></div><div class="ttdeci">#define MAX_ARGS</div><div class="ttdoc">Nombre maximum d'arguments.</div><div class="ttdef"><b>Definition</b> processus.h:19</div></div>
+<div class="ttc" id="aprocessus_8h_html_a33203f5945de8fa472f72622d222926b"><div class="ttname"><a href="processus_8h.html#a33203f5945de8fa472f72622d222926b">launch_command_line</a></div><div class="ttdeci">int launch_command_line(command_line_t *cmdl)</div><div class="ttdoc">Fonction de lancement d'une ligne de commande.</div><div class="ttdef"><b>Definition</b> processus.c:385</div></div>
+<div class="ttc" id="aprocessus_8h_html_a736a128764c23ee234d2c6118401ef71"><div class="ttname"><a href="processus_8h.html#a736a128764c23ee234d2c6118401ef71">MAX_ENV</a></div><div class="ttdeci">#define MAX_ENV</div><div class="ttdoc">Nombre maximum de variables d'environnement.</div><div class="ttdef"><b>Definition</b> processus.h:21</div></div>
+<div class="ttc" id="aprocessus_8h_html_a94c765782922d36e51dff3b405599440"><div class="ttname"><a href="processus_8h.html#a94c765782922d36e51dff3b405599440">add_processus</a></div><div class="ttdeci">processus_t * add_processus(command_line_t *cmdl, control_flow_mode_t mode)</div><div class="ttdoc">Fonction d'ajout d'un processus à la structure de contrôle de flux.</div><div class="ttdef"><b>Definition</b> processus.c:247</div></div>
+<div class="ttc" id="aprocessus_8h_html_a98cbfef0df69b9f91082949f5e1848f6"><div class="ttname"><a href="processus_8h.html#a98cbfef0df69b9f91082949f5e1848f6">control_flow_mode_t</a></div><div class="ttdeci">control_flow_mode_t</div><div class="ttdoc">Modes de contrôle de flux pour les processus.</div><div class="ttdef"><b>Definition</b> processus.h:31</div></div>
+<div class="ttc" id="aprocessus_8h_html_a98cbfef0df69b9f91082949f5e1848f6a04cf1408595a580d289bdaac55834ad6"><div class="ttname"><a href="processus_8h.html#a98cbfef0df69b9f91082949f5e1848f6a04cf1408595a580d289bdaac55834ad6">ON_SUCCESS</a></div><div class="ttdeci">@ ON_SUCCESS</div><div class="ttdoc">Exécution en cas de succès.</div><div class="ttdef"><b>Definition</b> processus.h:33</div></div>
+<div class="ttc" id="aprocessus_8h_html_a98cbfef0df69b9f91082949f5e1848f6a6d1e669a2a1ebcb8abb0a2dc22447359"><div class="ttname"><a href="processus_8h.html#a98cbfef0df69b9f91082949f5e1848f6a6d1e669a2a1ebcb8abb0a2dc22447359">UNCONDITIONAL</a></div><div class="ttdeci">@ UNCONDITIONAL</div><div class="ttdoc">Exécution inconditionnelle.</div><div class="ttdef"><b>Definition</b> processus.h:32</div></div>
+<div class="ttc" id="aprocessus_8h_html_a98cbfef0df69b9f91082949f5e1848f6afcff8971afca3980ca5bdafa93e531d0"><div class="ttname"><a href="processus_8h.html#a98cbfef0df69b9f91082949f5e1848f6afcff8971afca3980ca5bdafa93e531d0">ON_FAILURE</a></div><div class="ttdeci">@ ON_FAILURE</div><div class="ttdoc">Exécution en cas d'échec.</div><div class="ttdef"><b>Definition</b> processus.h:34</div></div>
+<div class="ttc" id="aprocessus_8h_html_a9de855396463362feef85246c5055741"><div class="ttname"><a href="processus_8h.html#a9de855396463362feef85246c5055741">init_processus</a></div><div class="ttdeci">int init_processus(processus_t *proc)</div><div class="ttdoc">Fonction d'initialisation d'une structure de processus.</div><div class="ttdef"><b>Definition</b> processus.c:51</div></div>
+<div class="ttc" id="aprocessus_8h_html_aa7be566c887f63f8962473eb35662e5a"><div class="ttname"><a href="processus_8h.html#aa7be566c887f63f8962473eb35662e5a">init_control_flow</a></div><div class="ttdeci">int init_control_flow(control_flow_t *cf)</div><div class="ttdoc">Fonction d'initialisation d'une structure de contrôle de flux.</div><div class="ttdef"><b>Definition</b> processus.c:220</div></div>
+<div class="ttc" id="aprocessus_8h_html_aa9f56dfdaa4b7d5ae27ae25cf7759d40"><div class="ttname"><a href="processus_8h.html#aa9f56dfdaa4b7d5ae27ae25cf7759d40">next_processus</a></div><div class="ttdeci">processus_t * next_processus(command_line_t *cmdl)</div><div class="ttdoc">Fonction de récupération du prochain processus à exécuter selon le contrôle de flux.</div><div class="ttdef"><b>Definition</b> processus.c:287</div></div>
+<div class="ttc" id="aprocessus_8h_html_abdbe7e802143b3e4122d652acbc74b7d"><div class="ttname"><a href="processus_8h.html#abdbe7e802143b3e4122d652acbc74b7d">init_command_line</a></div><div class="ttdeci">int init_command_line(command_line_t *cmdl)</div><div class="ttdoc">Fonction d'initialisation d'une structure de ligne de commande.</div><div class="ttdef"><b>Definition</b> processus.c:351</div></div>
+<div class="ttc" id="aprocessus_8h_html_ac41e0c806b6790a7ef06ed3236889f36"><div class="ttname"><a href="processus_8h.html#ac41e0c806b6790a7ef06ed3236889f36">MAX_CMD_LINE</a></div><div class="ttdeci">#define MAX_CMD_LINE</div><div class="ttdoc">Taille maximale d'une ligne de commande.</div><div class="ttdef"><b>Definition</b> processus.h:25</div></div>
+<div class="ttc" id="aprocessus_8h_html_acaa3a2e3b33a07ab1d32fb5d2ac6dbc2"><div class="ttname"><a href="processus_8h.html#acaa3a2e3b33a07ab1d32fb5d2ac6dbc2">add_fd</a></div><div class="ttdeci">int add_fd(command_line_t *cmdl, int fd)</div><div class="ttdoc">Fonction d'ajout d'un descripteur de fichier à la structure de contrôle de flux.</div><div class="ttdef"><b>Definition</b> processus.c:304</div></div>
+<div class="ttc" id="aprocessus_8h_html_ad14effda14501a769b3d46984d43aa00"><div class="ttname"><a href="processus_8h.html#ad14effda14501a769b3d46984d43aa00">MAX_CMDS</a></div><div class="ttdeci">#define MAX_CMDS</div><div class="ttdoc">Nombre maximum de commandes sur une ligne.</div><div class="ttdef"><b>Definition</b> processus.h:23</div></div>
+<div class="ttc" id="aprocessus_8h_html_ad9a75221e5e6ddb62b4e9cdc1a9f09ba"><div class="ttname"><a href="processus_8h.html#ad9a75221e5e6ddb62b4e9cdc1a9f09ba">close_fds</a></div><div class="ttdeci">int close_fds(command_line_t *cmdl)</div><div class="ttdoc">Fonction de fermeture des descripteurs de fichiers listés dans la structure de contrôle de flux.</div><div class="ttdef"><b>Definition</b> processus.c:325</div></div>
+<div class="ttc" id="aprocessus_8h_html_af64b28bf32de91947039dd43e6b34d22"><div class="ttname"><a href="processus_8h.html#af64b28bf32de91947039dd43e6b34d22">launch_processus</a></div><div class="ttdeci">int launch_processus(processus_t *proc)</div><div class="ttdoc">Fonction de lancement d'un processus à partir d'une structure de processus.</div><div class="ttdef"><b>Definition</b> processus.c:93</div></div>
+<div class="ttc" id="astructcommand__line__t_html"><div class="ttname"><a href="structcommand__line__t.html">command_line_t</a></div><div class="ttdoc">Structure représentant une ligne de commande.</div><div class="ttdef"><b>Definition</b> processus.h:82</div></div>
+<div class="ttc" id="astructcommand__line__t_html_a2474277c5dc6982f74bf0c69478c81de"><div class="ttname"><a href="structcommand__line__t.html#a2474277c5dc6982f74bf0c69478c81de">command_line_t::num_commands</a></div><div class="ttdeci">unsigned int num_commands</div><div class="ttdoc">Nombre de commandes.</div><div class="ttdef"><b>Definition</b> processus.h:87</div></div>
+<div class="ttc" id="astructcontrol__flow__t_html"><div class="ttname"><a href="structcontrol__flow__t.html">control_flow_t</a></div><div class="ttdoc">Structure de contrôle de flux.</div><div class="ttdef"><b>Definition</b> processus.h:66</div></div>
+<div class="ttc" id="astructcontrol__flow__t_html_a56c3e362b79013c628d0e370d69356c9"><div class="ttname"><a href="structcontrol__flow__t.html#a56c3e362b79013c628d0e370d69356c9">control_flow_t::cmdl</a></div><div class="ttdeci">struct command_line * cmdl</div><div class="ttdoc">Pointeur vers la structure de ligne de commande associée.</div><div class="ttdef"><b>Definition</b> processus.h:71</div></div>
+<div class="ttc" id="astructcontrol__flow__t_html_a8fa7c532ad427f96bacb4d68980d3f9a"><div class="ttname"><a href="structcontrol__flow__t.html#a8fa7c532ad427f96bacb4d68980d3f9a">control_flow_t::on_failure_next</a></div><div class="ttdeci">struct control_flow * on_failure_next</div><div class="ttdoc">Pointeur vers la prochaine structure de processus en cas d'échec de l'exécution.</div><div class="ttdef"><b>Definition</b> processus.h:70</div></div>
+<div class="ttc" id="astructcontrol__flow__t_html_aa9daf3077776be206f5596b95f74f316"><div class="ttname"><a href="structcontrol__flow__t.html#aa9daf3077776be206f5596b95f74f316">control_flow_t::on_success_next</a></div><div class="ttdeci">struct control_flow * on_success_next</div><div class="ttdoc">Pointeur vers la prochaine structure de processus en cas d'exécution réussie.</div><div class="ttdef"><b>Definition</b> processus.h:69</div></div>
+<div class="ttc" id="astructcontrol__flow__t_html_ad0efad4c99beb666bfc4480b762568aa"><div class="ttname"><a href="structcontrol__flow__t.html#ad0efad4c99beb666bfc4480b762568aa">control_flow_t::proc</a></div><div class="ttdeci">processus_t * proc</div><div class="ttdoc">Pointeur vers la structure du processus courant.</div><div class="ttdef"><b>Definition</b> processus.h:67</div></div>
+<div class="ttc" id="astructcontrol__flow__t_html_ae8719818e630ee0563ee4ed068bd0643"><div class="ttname"><a href="structcontrol__flow__t.html#ae8719818e630ee0563ee4ed068bd0643">control_flow_t::unconditionnal_next</a></div><div class="ttdeci">struct control_flow * unconditionnal_next</div><div class="ttdoc">Pointeur vers la prochaine structure de processus en cas d'exécution inconditionnelle.</div><div class="ttdef"><b>Definition</b> processus.h:68</div></div>
+<div class="ttc" id="astructprocessus__t_html"><div class="ttname"><a href="structprocessus__t.html">processus_t</a></div><div class="ttdoc">Structure représentant un processus.</div><div class="ttdef"><b>Definition</b> processus.h:45</div></div>
+<div class="ttc" id="astructprocessus__t_html_a2c88f013d10908b08c0faacc176330a4"><div class="ttname"><a href="structprocessus__t.html#a2c88f013d10908b08c0faacc176330a4">processus_t::invert</a></div><div class="ttdeci">uint8_t invert</div><div class="ttdoc">Inversion du code de retour pour le contrôle de flux.</div><div class="ttdef"><b>Definition</b> processus.h:56</div></div>
+<div class="ttc" id="astructprocessus__t_html_a77211fce5deeaf7724cd40858d7ea9a0"><div class="ttname"><a href="structprocessus__t.html#a77211fce5deeaf7724cd40858d7ea9a0">processus_t::cf</a></div><div class="ttdeci">struct control_flow * cf</div><div class="ttdoc">Pointeur vers la structure de contrôle de flux associée.</div><div class="ttdef"><b>Definition</b> processus.h:59</div></div>
+<div class="ttc" id="astructprocessus__t_html_a7c675ff8461d26def4b729ace411edfb"><div class="ttname"><a href="structprocessus__t.html#a7c675ff8461d26def4b729ace411edfb">processus_t::status</a></div><div class="ttdeci">int status</div><div class="ttdoc">Statut de sortie.</div><div class="ttdef"><b>Definition</b> processus.h:54</div></div>
+<div class="ttc" id="astructprocessus__t_html_ab14bb37398cab87c068a6ea6b5dd437a"><div class="ttname"><a href="structprocessus__t.html#ab14bb37398cab87c068a6ea6b5dd437a">processus_t::stdout_fd</a></div><div class="ttdeci">int stdout_fd</div><div class="ttdoc">Descripteur de sortie standard.</div><div class="ttdef"><b>Definition</b> processus.h:52</div></div>
+<div class="ttc" id="astructprocessus__t_html_ab810ac5c6799460f71a65369d091ca43"><div class="ttname"><a href="structprocessus__t.html#ab810ac5c6799460f71a65369d091ca43">processus_t::is_background</a></div><div class="ttdeci">uint8_t is_background</div><div class="ttdoc">Background flag.</div><div class="ttdef"><b>Definition</b> processus.h:55</div></div>
+<div class="ttc" id="astructprocessus__t_html_abcb99e1ffd763f1e6d8c6d77621a0b01"><div class="ttname"><a href="structprocessus__t.html#abcb99e1ffd763f1e6d8c6d77621a0b01">processus_t::pid</a></div><div class="ttdeci">pid_t pid</div><div class="ttdoc">Process ID.</div><div class="ttdef"><b>Definition</b> processus.h:46</div></div>
+<div class="ttc" id="astructprocessus__t_html_ad6f785d0a6c89ac3062089106eb61db7"><div class="ttname"><a href="structprocessus__t.html#ad6f785d0a6c89ac3062089106eb61db7">processus_t::stderr_fd</a></div><div class="ttdeci">int stderr_fd</div><div class="ttdoc">Descripteur d'erreur standard.</div><div class="ttdef"><b>Definition</b> processus.h:53</div></div>
+<div class="ttc" id="astructprocessus__t_html_af1e6b774fa35966e40872263440e5341"><div class="ttname"><a href="structprocessus__t.html#af1e6b774fa35966e40872263440e5341">processus_t::stdin_fd</a></div><div class="ttdeci">int stdin_fd</div><div class="ttdoc">Descripteur d'entrée standard.</div><div class="ttdef"><b>Definition</b> processus.h:51</div></div>
+<div class="ttc" id="astructprocessus__t_html_afa345f3169172df13488f7ba55a6a841"><div class="ttname"><a href="structprocessus__t.html#afa345f3169172df13488f7ba55a6a841">processus_t::path</a></div><div class="ttdeci">char * path</div><div class="ttdoc">Chemin de l'exécutable.</div><div class="ttdef"><b>Definition</b> processus.h:49</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="processus_8h.html">processus.h</a></li>
+    <li class="footer">Généré le Jeudi 27 Novembre 2025 08:13:04 pour Minishell PSI 2025 par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

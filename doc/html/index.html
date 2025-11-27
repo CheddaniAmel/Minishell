@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Minishell PSI 2025: Projet minishell</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Minishell PSI 2025
+   </div>
+   <div id="projectbrief">Projet Minishell - UE PSI - Licence 3 Informatique 2025-26</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Projet minishell </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_doc_2projet"></a> </p>
+<h2><a class="anchor" id="autotoc_md1"></a>
+Objectifs</h2>
+<p>L'objectif du projet est d'implémenter un shell Unix très élémentaire. Il permettra au minimum de gérer :</p><ul>
+<li>L'exécution de commandes simples avec leurs arguments<ul>
+<li>En avant plan : <em>cmd arg1 arg2 ...</em></li>
+<li>En arrière plan : <em>cmd arg1 arg2 ... &amp;</em></li>
+<li>L'exécution avec inversion succès/échec : <em>! cmd arg1 arg2 ...</em></li>
+</ul>
+</li>
+<li>L'exécution inconditionnelle d'une suite de commandes :<ul>
+<li>En avant plan : <em>cmd1 arg1_1 arg1_2 ... ; cmd2 arg2_1 arg2_2 ... ; ... ; cmdn argn_1 argn_2 ...</em></li>
+<li>En arrière plan : <em>cmd1 arg1_1 arg1_2 ... &amp; cmd2 arg2_1 arg2_2 ... &amp; ... &amp; cmdn argn_1 argn_2 ...</em></li>
+<li>La combinaision des deux : <em>cmd1 arg1_1 arg1_2 ... ; cmd2 arg2_1 arg2_2 ... &amp; cmd3 arg3_1 arg3_2 ... ; ... &amp; cmdn argn_1 argn_2 ...</em></li>
+</ul>
+</li>
+<li>Les exécutions conditionnelles de suites de commandes :<ul>
+<li>Exécution en cas de succès : <em>cmd1 arg1_1 arg1_2 &amp;&amp; cmd2 arg2_1 arg2_2 ... &amp;&amp; cmdn argn_1 argn_2 ...</em></li>
+<li>Exécution en cas d'échec : <em>cmd1 arg1_1 arg1_2 || cmd2 arg2_1 arg2_2 ... || cmdn argn_1 argn_2 ...</em></li>
+<li>Avec inversion éventuelle : <em>! cmd1 arg1_1</em></li>
+<li>La combinaison des trois : <em>cmd1 arg1_1 arg1_2 &amp;&amp; ! cmd2 arg2_1 arg2_2 || cmd3 arg3_1 arg3_2 ... &amp;&amp; cmdn argn_1 argn_2 ...</em></li>
+</ul>
+</li>
+<li>Les combinaisons de suites de commandes conditionnelles/inconditionnelles : <em>cmd1 arg1_1 arg1_2 ... ; cmd2 arg2_1 arg2_2 ... &amp;&amp; cmd3 arg3_1 arg3_2 ... || cmd4 arg4_1 arg4_2 &amp; ... &amp; cmdn argn/_1 argn_2 ...</em></li>
+<li>Les redirections des IOs des processus :<ul>
+<li>La redirection de l'entrée standard : <em>cmd arg1 arg2 ... &lt; input</em></li>
+<li>La redirection de la sortie standard en mode "remplacement" : <em>cmd arg1 arg2 ... &gt; output</em></li>
+<li>La redirection de la sortie standard en mode "ajout" : <em>cmd arg1 arg2 ... &gt;&gt; output</em></li>
+<li>La redirection de la sortie d'erreur en mode "remplacement" : <em>cmd arg1 arg2 ... &gt; error</em></li>
+<li>La redirection de la sortie d'erreur en mode "ajout" : <em>cmd arg1 arg2 ... &gt;&gt; error</em></li>
+<li>La redirection de la sortie standard vers la sortie d'erreur : <em>cmd arg1 arg2 ... &gt;&amp;2</em></li>
+<li><em>La redirection de la sortie d'erreur vers la sortie standard : _cmd arg1 arg2 ... 2&gt;&amp;1</em></li>
+<li>Les redirections via un tube : <em>cmd1 arg1_1 arg1_2 ... | cmd2 arg2_1 arg2_2 ...</em></li>
+<li>Les compositions de redirections : <em>cmd1 arg1_1 arg1_2 ... 2&gt;&amp;1 &lt; input | cmd2 arg2_1 arg2_2 ... 2&gt;&gt; error &gt; output ...</em></li>
+</ul>
+</li>
+<li>Les commandes intégrées avec gestion des redirections éventuelles :<ul>
+<li>cd : déplacement du Current Working Directory (CWD) dans le système de fichier</li>
+<li>exit [val] : sortie du shell avec le code (optionnel) <em>val</em>.</li>
+<li>export <em>VAR=val</em> : définition de variables d'environnement <em>VAR</em>.</li>
+<li>unset <em>VAR</em> : suppression de la variable d'environnement <em>VAR</em>.</li>
+<li>pwd : affichage du CWD.</li>
+</ul>
+</li>
+<li>Les combinaisons de tout ce qui précède : <em>cmd1 arg1_1 arg1_2 ... &lt; input &amp;&amp; cmd2 arg2_1 arg2_2 ... | cmd3 arg3_1 arg3_2 ... 2&gt;&gt; error &gt; output &amp; cmd4 arg4_1 arg4_2 ... || cmd5 arg5_1 arg5_2 ... ; ...</em></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Code fourni</h2>
+<p>Pour la réalisation du projet un "squelette" du code vous est fourni. <b>Son utilisation est obligatoire.</b> Les fichiers suivants sont fournis :</p><ul>
+<li><a class="el" href="processus_8h.html">`include/processus.h`</a> et <a class="el" href="processus_8c.html">`src/processus.c`</a> : définition des structures et fonctions de gestion des processus et de leurs enchaînements en fonction du flux d'instruction.</li>
+<li><a class="el" href="parser_8h.html">`include/parser.h`</a> et <a class="el" href="parser_8c.html">`src/parser.c`</a> : fonctions d'analyse et de traduction des commandes en flux d'instructions dans les structure de <a class="el" href="processus_8h.html">`include/processus.h`</a>.</li>
+<li><a class="el" href="builtins_8h.html">`include/builtins.h`</a> et <a class="el" href="builtins_8c.html">`src/builtins.c`</a> : gestion des commandes intégrées du shell.</li>
+<li><a class="el" href="main_8c.html">`src/main.c`</a> : implémentation de la boucle générale du shell.</li>
+</ul>
+<p>La fonction <a class="el" href="parser_8c.html#ac1f113b9a5d497bcc6853c555643c10c" title="Fonction d&#39;analyse d&#39;une ligne de commande.">parse_command_line()</a> contient des exemples pour l'implémentation des opérateurs du shell (';' et '&lt;'), il s'agit donc essentiellement de bien comprendre la structure de données et réfléchir à ce que signifie un opérateur sur l'initialisation de celle-ci.</p>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Compilation et création de la documentation</h2>
+<p>Un fichier Makefile est fourni afin de simplifier la compilation du projet. Une commande <code>make</code> à la racine du projet provoque la compilation de celui-ci avec la production d'un exécutable nommé <code>minishell</code>. Une commande <code>make doc</code> crée la documentation dans le répertoire <code>doc/</code> via l'outil <a href="http://www.doxygen.nl"><code>doxygen</code></a>.</p>
+<ul>
+<li><code>$ make</code> : compilation des sources et création de l'exécutable <code>minishell</code></li>
+<li><code>$ make doc</code> : création de la documentation dans le répertoire <code>doc/html</code> si l'outil <a href="http://www.doxygen.nl"><code>doxygen</code></a> est installé.</li>
+<li><code>$ make clean</code> : suppression de tous les fichiers objets <code>.o</code></li>
+<li><code>$ make deepclean</code> : suppression de tous les fichiers objets, de l'exécutable <code>minishell</code> et de la documentation.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Rendu</h2>
+<p>Tous les fichiers sources rendus doivent comporter les noms et prénoms <b>des deux binômes</b> dans l'en-tête du fichier. Vous nommerez le répertoire du projet de la manière suivante : <code>&lt;numéro de binôme&gt;_Nom1_Nom2</code> Et l'archive de celui-ci : <code>&lt;numéro de binôme&gt;_Nom1_Nom2.[zip|tar.gz|tar.bz2|tar.xz]</code> Le format de l'archive doit être <b>exclusivement</b> <code>.zip</code>, <code>.tar.gz</code>, <code>tar.bz2</code> ou <code>tar.xz</code> <b>à l'exclusion de tout autre format</b>.</p>
+<p>Par exemple, le binôme n°2 constitué de Jean Martin et Marie Dupont, rend un projet regroupé dans le répertoire <code>02_Martin_Dupont</code> compressé dans l'archive nommée <code>02_Martin_Dupont.tar.xz</code>.</p>
+<p>Vous prendrez soin de ne rendre que les fichiers sources (i.e. ni l'exécutable ni les fichiers objets, ni la documentation créée par <a href="http://www.doxygen.nl"><code>doxygen</code></a>). </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Jeudi 27 Novembre 2025 08:13:04 pour Minishell PSI 2025 par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

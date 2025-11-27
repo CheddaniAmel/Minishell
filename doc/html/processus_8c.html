@@ -1,0 +1,521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Minishell PSI 2025: Référence du fichier src/processus.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Minishell PSI 2025
+   </div>
+   <div id="projectbrief">Projet Minishell - UE PSI - Licence 3 Informatique 2025-26</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('processus_8c.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier processus.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implementation of process management functions.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;signal.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="processus_8h_source.html">processus.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="builtins_8h_source.html">builtins.h</a>&quot;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;sys/types.h&gt;</code><br />
+<code>#include &lt;sys/wait.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &lt;errno.h&gt;</code><br />
+<code>#include &lt;fcntl.h&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a369266c24eacffb87046522897a570d5" id="r_a369266c24eacffb87046522897a570d5"><td class="memItemLeft" align="right" valign="top"><a id="a369266c24eacffb87046522897a570d5" name="a369266c24eacffb87046522897a570d5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>_GNU_SOURCE</b></td></tr>
+<tr class="separator:a369266c24eacffb87046522897a570d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a816ccaf3e5e64cc98f2b5613cc177398" id="r_a816ccaf3e5e64cc98f2b5613cc177398"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="processus_8c.html#a816ccaf3e5e64cc98f2b5613cc177398">MAX_FDS</a>&#160;&#160;&#160;32</td></tr>
+<tr class="memdesc:a816ccaf3e5e64cc98f2b5613cc177398"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction d'initialisation d'une structure de processus.  <br /></td></tr>
+<tr class="separator:a816ccaf3e5e64cc98f2b5613cc177398"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09886d6ba96e67553bf3c49ed8ade975" id="r_a09886d6ba96e67553bf3c49ed8ade975"><td class="memItemLeft" align="right" valign="top"><a id="a09886d6ba96e67553bf3c49ed8ade975" name="a09886d6ba96e67553bf3c49ed8ade975"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_TOKENS</b>&#160;&#160;&#160;128</td></tr>
+<tr class="separator:a09886d6ba96e67553bf3c49ed8ade975"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a9de855396463362feef85246c5055741" id="r_a9de855396463362feef85246c5055741"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="processus_8c.html#a9de855396463362feef85246c5055741">init_processus</a> (<a class="el" href="structprocessus__t.html">processus_t</a> *proc)</td></tr>
+<tr class="memdesc:a9de855396463362feef85246c5055741"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction d'initialisation d'une structure de processus.  <br /></td></tr>
+<tr class="separator:a9de855396463362feef85246c5055741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af64b28bf32de91947039dd43e6b34d22" id="r_af64b28bf32de91947039dd43e6b34d22"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="processus_8c.html#af64b28bf32de91947039dd43e6b34d22">launch_processus</a> (<a class="el" href="structprocessus__t.html">processus_t</a> *proc)</td></tr>
+<tr class="memdesc:af64b28bf32de91947039dd43e6b34d22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de lancement d'un processus à partir d'une structure de processus.  <br /></td></tr>
+<tr class="separator:af64b28bf32de91947039dd43e6b34d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7be566c887f63f8962473eb35662e5a" id="r_aa7be566c887f63f8962473eb35662e5a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="processus_8c.html#aa7be566c887f63f8962473eb35662e5a">init_control_flow</a> (<a class="el" href="structcontrol__flow__t.html">control_flow_t</a> *cf)</td></tr>
+<tr class="memdesc:aa7be566c887f63f8962473eb35662e5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction d'initialisation d'une structure de contrôle de flux.  <br /></td></tr>
+<tr class="separator:aa7be566c887f63f8962473eb35662e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94c765782922d36e51dff3b405599440" id="r_a94c765782922d36e51dff3b405599440"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structprocessus__t.html">processus_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="processus_8c.html#a94c765782922d36e51dff3b405599440">add_processus</a> (<a class="el" href="structcommand__line__t.html">command_line_t</a> *cmdl, <a class="el" href="processus_8h.html#a98cbfef0df69b9f91082949f5e1848f6">control_flow_mode_t</a> mode)</td></tr>
+<tr class="memdesc:a94c765782922d36e51dff3b405599440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction d'ajout d'un processus à la structure de contrôle de flux.  <br /></td></tr>
+<tr class="separator:a94c765782922d36e51dff3b405599440"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9f56dfdaa4b7d5ae27ae25cf7759d40" id="r_aa9f56dfdaa4b7d5ae27ae25cf7759d40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structprocessus__t.html">processus_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="processus_8c.html#aa9f56dfdaa4b7d5ae27ae25cf7759d40">next_processus</a> (<a class="el" href="structcommand__line__t.html">command_line_t</a> *cmdl)</td></tr>
+<tr class="memdesc:aa9f56dfdaa4b7d5ae27ae25cf7759d40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de récupération du prochain processus à exécuter selon le contrôle de flux.  <br /></td></tr>
+<tr class="separator:aa9f56dfdaa4b7d5ae27ae25cf7759d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaa3a2e3b33a07ab1d32fb5d2ac6dbc2" id="r_acaa3a2e3b33a07ab1d32fb5d2ac6dbc2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="processus_8c.html#acaa3a2e3b33a07ab1d32fb5d2ac6dbc2">add_fd</a> (<a class="el" href="structcommand__line__t.html">command_line_t</a> *cmdl, int fd)</td></tr>
+<tr class="memdesc:acaa3a2e3b33a07ab1d32fb5d2ac6dbc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction d'ajout d'un descripteur de fichier à la structure de contrôle de flux.  <br /></td></tr>
+<tr class="separator:acaa3a2e3b33a07ab1d32fb5d2ac6dbc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9a75221e5e6ddb62b4e9cdc1a9f09ba" id="r_ad9a75221e5e6ddb62b4e9cdc1a9f09ba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="processus_8c.html#ad9a75221e5e6ddb62b4e9cdc1a9f09ba">close_fds</a> (<a class="el" href="structcommand__line__t.html">command_line_t</a> *cmdl)</td></tr>
+<tr class="memdesc:ad9a75221e5e6ddb62b4e9cdc1a9f09ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de fermeture des descripteurs de fichiers listés dans la structure de contrôle de flux.  <br /></td></tr>
+<tr class="separator:ad9a75221e5e6ddb62b4e9cdc1a9f09ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdbe7e802143b3e4122d652acbc74b7d" id="r_abdbe7e802143b3e4122d652acbc74b7d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="processus_8c.html#abdbe7e802143b3e4122d652acbc74b7d">init_command_line</a> (<a class="el" href="structcommand__line__t.html">command_line_t</a> *cmdl)</td></tr>
+<tr class="memdesc:abdbe7e802143b3e4122d652acbc74b7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction d'initialisation d'une structure de ligne de commande.  <br /></td></tr>
+<tr class="separator:abdbe7e802143b3e4122d652acbc74b7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33203f5945de8fa472f72622d222926b" id="r_a33203f5945de8fa472f72622d222926b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="processus_8c.html#a33203f5945de8fa472f72622d222926b">launch_command_line</a> (<a class="el" href="structcommand__line__t.html">command_line_t</a> *cmdl)</td></tr>
+<tr class="memdesc:a33203f5945de8fa472f72622d222926b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de lancement d'une ligne de commande.  <br /></td></tr>
+<tr class="separator:a33203f5945de8fa472f72622d222926b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa30966c65b76b20cf8ec97d9751d826f" id="r_aa30966c65b76b20cf8ec97d9751d826f"><td class="memItemLeft" align="right" valign="top"><a id="aa30966c65b76b20cf8ec97d9751d826f" name="aa30966c65b76b20cf8ec97d9751d826f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>free_processus</b> (<a class="el" href="structprocessus__t.html">processus_t</a> *p)</td></tr>
+<tr class="separator:aa30966c65b76b20cf8ec97d9751d826f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Implementation of process management functions. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Nom1 </dd>
+<dd>
+Nom2 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025-26</dd></dl>
+<p>Implémentation des fonctions de gestion des processus. </p>
+</div><h2 class="groupheader">Documentation des macros</h2>
+<a id="a816ccaf3e5e64cc98f2b5613cc177398" name="a816ccaf3e5e64cc98f2b5613cc177398"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a816ccaf3e5e64cc98f2b5613cc177398">&#9670;&#160;</a></span>MAX_FDS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_FDS&#160;&#160;&#160;32</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction d'initialisation d'une structure de processus. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">proc</td><td>Pointeur vers la structure de processus à initialiser. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int 0 en cas de succès, -1 en cas d'erreur.</dd></dl>
+<p>Cette fonction initialise les champs de la structure avec les valeurs suivantes:</p><ul>
+<li><em>pid</em>: 0</li>
+<li><em>argv</em>: {NULL}</li>
+<li><em>envp</em>: {NULL}</li>
+<li><em>path</em>: NULL</li>
+<li><em>stdin_fd</em>: 0</li>
+<li><em>stdout_fd</em>: 1</li>
+<li><em>stderr_fd</em>: 2</li>
+<li><em>status</em>: 0</li>
+<li><em>is_background</em>: 0</li>
+<li><em>start_time</em>: {0}</li>
+<li><em>end_time</em>: {0}</li>
+<li><em>cf</em>: NULL </li>
+</ul>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="acaa3a2e3b33a07ab1d32fb5d2ac6dbc2" name="acaa3a2e3b33a07ab1d32fb5d2ac6dbc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaa3a2e3b33a07ab1d32fb5d2ac6dbc2">&#9670;&#160;</a></span>add_fd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int add_fd </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcommand__line__t.html">command_line_t</a> *&#160;</td>
+          <td class="paramname"><em>cmdl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction d'ajout d'un descripteur de fichier à la structure de contrôle de flux. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmdl</td><td>Pointeur vers la structure de ligne de commande. </td></tr>
+    <tr><td class="paramname">fd</td><td>Descripteur de fichier à ajouter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int 0 en cas de succès, -1 en cas d'erreur (tableau plein ou fd invalide).</dd></dl>
+<p>Cette fonction ajoute le descripteur de fichier <em>fd</em> au tableau <em>opened_descriptors</em> de la structure <em>cf</em>. Si le tableau est plein ou si <em>fd</em> est invalide (négatif), la fonction retourne -1 </p>
+
+</div>
+</div>
+<a id="a94c765782922d36e51dff3b405599440" name="a94c765782922d36e51dff3b405599440"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94c765782922d36e51dff3b405599440">&#9670;&#160;</a></span>add_processus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structprocessus__t.html">processus_t</a> * add_processus </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcommand__line__t.html">command_line_t</a> *&#160;</td>
+          <td class="paramname"><em>cmdl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="processus_8h.html#a98cbfef0df69b9f91082949f5e1848f6">control_flow_mode_t</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction d'ajout d'un processus à la structure de contrôle de flux. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmdl</td><td>Pointeur vers la structure de ligne de commande dans laquelle le processus doit être ajouté. </td></tr>
+    <tr><td class="paramname">mode</td><td>Mode d'ajout (UNCONDITIONAL, ON_SUCCESS, ON_FAILURE). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>processus_t* Pointeur vers le processus ajouté, ou NULL en cas d'erreur (tableau plein par exemple).</dd></dl>
+<p>Cette fonction ajoute le processus <em>proc</em> à la structure de contrôle de flux <em>cf</em> selon le mode spécifié: Le dernier élément du tableau <em>commands</em> est retourné après avoir été initialisé dans le dernier élément du tableau <em>flow</em>. Cette structure <a class="el" href="structcontrol__flow__t.html" title="Structure de contrôle de flux.">control_flow_t</a> est mise à jour pour que le champ <em>proc</em> pointe vers le processus ajouté et la liste est mise à jour de la manière suivante :</p><ul>
+<li>Si <em>mode</em> est UNCONDITIONAL, <em>proc</em> est ajouté à la liste des processus à exécuter inconditionnellement après le processus courant.</li>
+<li>Si <em>mode</em> est ON_SUCCESS, <em>proc</em> est ajouté à la liste des processus à exécuter uniquement si le processus courant s'est terminé avec succès (code de retour 0).</li>
+<li>Si <em>mode</em> est ON_FAILURE, <em>proc</em> est ajouté à la liste des processus à exécuter uniquement si le processus courant s'est terminé avec un échec (code de retour non nul). </li>
+</ul>
+
+</div>
+</div>
+<a id="ad9a75221e5e6ddb62b4e9cdc1a9f09ba" name="ad9a75221e5e6ddb62b4e9cdc1a9f09ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9a75221e5e6ddb62b4e9cdc1a9f09ba">&#9670;&#160;</a></span>close_fds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int close_fds </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcommand__line__t.html">command_line_t</a> *&#160;</td>
+          <td class="paramname"><em>cmdl</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction de fermeture des descripteurs de fichiers listés dans la structure de contrôle de flux. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmdl</td><td>Pointeur vers la structure de ligne de commande. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int 0 en cas de succès, -1 en cas d'erreur.</dd></dl>
+<p>Cette fonction ferme tous les descripteurs de fichiers listés dans le tableau <em>opened_descriptors</em> de la structure <em>cf</em>. Après fermeture, les entrées du tableau sont remises à -1. </p>
+
+</div>
+</div>
+<a id="abdbe7e802143b3e4122d652acbc74b7d" name="abdbe7e802143b3e4122d652acbc74b7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdbe7e802143b3e4122d652acbc74b7d">&#9670;&#160;</a></span>init_command_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int init_command_line </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcommand__line__t.html">command_line_t</a> *&#160;</td>
+          <td class="paramname"><em>cmdl</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction d'initialisation d'une structure de ligne de commande. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmdl</td><td>Pointeur vers la structure de ligne de commande à initialiser. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int 0 en cas de succès, -1 en cas d'erreur.</dd></dl>
+<p>Cette fonction initialise les champs de la structure avec les valeurs suivantes:</p><ul>
+<li><em>command_line</em>: "\0"</li>
+<li><em>tokens</em>: {NULL}</li>
+<li><em>commands</em>: tableau de processus initialisés via <em><a class="el" href="processus_8c.html#a9de855396463362feef85246c5055741" title="Fonction d&#39;initialisation d&#39;une structure de processus.">init_processus()</a></em></li>
+<li><em>flow</em>: tableau de contrôle de flux initialisé via <em><a class="el" href="processus_8c.html#aa7be566c887f63f8962473eb35662e5a" title="Fonction d&#39;initialisation d&#39;une structure de contrôle de flux.">init_control_flow()</a></em></li>
+<li><em>num_commands</em>: 0</li>
+<li><em>opened_descriptors</em>: {-1} </li>
+</ul>
+
+</div>
+</div>
+<a id="aa7be566c887f63f8962473eb35662e5a" name="aa7be566c887f63f8962473eb35662e5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7be566c887f63f8962473eb35662e5a">&#9670;&#160;</a></span>init_control_flow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int init_control_flow </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcontrol__flow__t.html">control_flow_t</a> *&#160;</td>
+          <td class="paramname"><em>cf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction d'initialisation d'une structure de contrôle de flux. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cf</td><td>Pointeur vers la structure de contrôle de flux à initialiser. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int 0 en cas de succès, -1 en cas d'erreur.</dd></dl>
+<p>Cette fonction initialise les champs de la structure avec les valeurs suivantes:</p><ul>
+<li><em>proc</em>: NULL</li>
+<li><em>unconditionnal_next</em>: NULL</li>
+<li><em>on_success_next</em>: NULL</li>
+<li><em>on_failure_next</em>: NULL</li>
+<li><em>cmdl</em>: NULL </li>
+</ul>
+
+</div>
+</div>
+<a id="a9de855396463362feef85246c5055741" name="a9de855396463362feef85246c5055741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9de855396463362feef85246c5055741">&#9670;&#160;</a></span>init_processus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int init_processus </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structprocessus__t.html">processus_t</a> *&#160;</td>
+          <td class="paramname"><em>proc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction d'initialisation d'une structure de processus. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">proc</td><td>Pointeur vers la structure de processus à initialiser. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int 0 en cas de succès, -1 en cas d'erreur.</dd></dl>
+<p>Cette fonction initialise les champs de la structure avec les valeurs suivantes:</p><ul>
+<li><em>pid</em>: 0</li>
+<li><em>argv</em>: {NULL}</li>
+<li><em>envp</em>: {NULL}</li>
+<li><em>path</em>: NULL</li>
+<li><em>stdin_fd</em>: 0</li>
+<li><em>stdout_fd</em>: 1</li>
+<li><em>stderr_fd</em>: 2</li>
+<li><em>status</em>: 0</li>
+<li><em>is_background</em>: 0</li>
+<li><em>invert</em>: 0</li>
+<li><em>start_time</em>: {0}</li>
+<li><em>end_time</em>: {0}</li>
+<li><em>cf</em>: NULL </li>
+</ul>
+
+</div>
+</div>
+<a id="a33203f5945de8fa472f72622d222926b" name="a33203f5945de8fa472f72622d222926b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33203f5945de8fa472f72622d222926b">&#9670;&#160;</a></span>launch_command_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int launch_command_line </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcommand__line__t.html">command_line_t</a> *&#160;</td>
+          <td class="paramname"><em>cmdl</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction de lancement d'une ligne de commande. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmdl</td><td>Pointeur vers la structure de ligne de commande à lancer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int 0 en cas de succès, un code d'erreur sinon.</dd></dl>
+<p>Cette fonction lance les processus selon le flux défini dans la structure <em>cmdl</em>. Les lancements sont effectués via <em><a class="el" href="processus_8c.html#af64b28bf32de91947039dd43e6b34d22" title="Fonction de lancement d&#39;un processus à partir d&#39;une structure de processus.">launch_processus()</a></em> en respectant les conditions de contrôle de flux (inconditionnel, en cas de succès, en cas d'échec). Le tableau <em>opened_descriptors</em> est utilisé pour fermer les descripteurs ouverts au moment de l'initialisation des structures <a class="el" href="structprocessus__t.html" title="Structure représentant un processus.">processus_t</a>. La fonction retourne 0 si tous les processus à lancer en fonction du contrôle de flux ont pu être lancés sans erreur. </p>
+
+</div>
+</div>
+<a id="af64b28bf32de91947039dd43e6b34d22" name="af64b28bf32de91947039dd43e6b34d22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af64b28bf32de91947039dd43e6b34d22">&#9670;&#160;</a></span>launch_processus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int launch_processus </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structprocessus__t.html">processus_t</a> *&#160;</td>
+          <td class="paramname"><em>proc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction de lancement d'un processus à partir d'une structure de processus. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">proc</td><td>Pointeur vers la structure de processus à lancer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int 0 en cas de succès, un code d'erreur sinon.</dd></dl>
+<p>Cette fonction utilise <em>fork()</em> et <em>execve()</em> pour lancer le processus décrit par la structure. Elle gère également les redirections des IOs standards (via <em>dup2()</em>). En cas de succès, le champ <em>pid</em> de la structure est mis à jour avec le PID du processus fils. Le flag <em>is_background</em> détermine si on attend la fin du processus ou non. La valeur de <em>status</em> est mise à jour à l'issue de l'exécution avec le code de retour du processus fils lorsque le flag <em>is_background</em> est désactivé. Les temps de démarrage et d'arrêt sont enregistrés dans <em>start_time</em> et <em>end_time</em> respectivement. <em>end_time</em> est mis à jour uniquement si <em>is_background</em> est désactivé. Les descripteurs de fichiers ouverts sont gérés dans <em>cf-&gt;cmdl-&gt;opened_descriptors</em> : le processus "fils" ferme tous les descripteurs listés dans ce tableau avant d'exécuter la commande. </p>
+
+</div>
+</div>
+<a id="aa9f56dfdaa4b7d5ae27ae25cf7759d40" name="aa9f56dfdaa4b7d5ae27ae25cf7759d40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9f56dfdaa4b7d5ae27ae25cf7759d40">&#9670;&#160;</a></span>next_processus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structprocessus__t.html">processus_t</a> * next_processus </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcommand__line__t.html">command_line_t</a> *&#160;</td>
+          <td class="paramname"><em>cmdl</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction de récupération du prochain processus à exécuter selon le contrôle de flux. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmdl</td><td>Pointeur vers la structure de ligne de commande. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>processus_t* Pointeur vers le prochain processus à exécuter, ou NULL si le nombre maximum est atteint.</dd></dl>
+<p>Cette fonction retourne un pointeur vers la structure <a class="el" href="structprocessus__t.html" title="Structure représentant un processus.">processus_t</a> dans le tableau <em>commands</em> situé à l'indice <em>num_commands + 1</em>. Si le nombre maximum de commandes est atteint (MAX_CMDS), la fonction retourne NULL. Cela permet notamment d'initialiser les descripteurs des IOs standards qui dépendent du processus en court de traitement (dans le cas des pipes par exemple). </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="processus_8c.html">processus.c</a></li>
+    <li class="footer">Généré le Jeudi 27 Novembre 2025 08:13:04 pour Minishell PSI 2025 par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>
