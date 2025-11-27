@@ -124,4 +124,3 @@ il n’a pas vocation à remplacer un shell complet (bash, zsh…).
 **Amel Cheddani**
 Projet PSI 2025/2026
 
-```
